@@ -1,0 +1,7 @@
+<ul>
+    {{#each controller}}
+        <li>{{#linkTo 'books.book' this}}{{title}}{{/linkTo}}</li>
+    {{/each}}
+</ul>
+
+{{outlet}}
