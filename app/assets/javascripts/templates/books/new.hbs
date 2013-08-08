@@ -1,0 +1,7 @@
+<form {{action 'save' on='submit'}}>
+    Title: {{view Ember.TextField valueBinding='model.title'}}
+    Adults Only: {{view Ember.Checkbox checkedBinding='model.adult'}}
+    Notes: {{view Ember.TextArea valueBinding='model.notes'}}
+
+    <input type='submit'>
+</form>
