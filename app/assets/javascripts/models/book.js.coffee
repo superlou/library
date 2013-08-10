@@ -10,5 +10,15 @@ Library.Book = Ember.Model.extend
   adult: attr()
   notes: attr()
 
+  full_title: (->
+    volume = @get('volume')
+
+    if volume
+      @get('title') + ", vol. " + volume
+    else
+      @get('title')
+
+  ).property('title', 'volume')
+
 Library.Book.url = '/books'
 Library.Book.adapter = Ember.RESTAdapter.create()
