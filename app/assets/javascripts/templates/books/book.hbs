@@ -1,5 +1,9 @@
 {{#if isEditing}}
-    {{partial 'books/edit'}}
+    <form>
+        {{partial 'books/edit'}}
+        <button {{action 'saveEdit'}}>Save</button>
+        <button {{action 'cancelEdit'}}>Cancel</button>
+    </form>
 {{else}}
     <h1>{{title}}</h1>
     <p>{{code}}</p>

@@ -4,8 +4,8 @@ belongsTo = Ember.belongsTo
 
 Library.Checkout = Ember.Model.extend
   id: attr(Number)
-  book: belongsTo('Library.Book', {key: 'book', embedded: true})
-  patron: belongsTo('Library.Patron', {key: 'patron', embedded: true})
+  book: belongsTo('Library.Book', {key: 'book_id'})
+  patron: belongsTo('Library.Patron', {key: 'patron_id'})
   status: attr()
   closed_at: attr(Date)
 

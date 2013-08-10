@@ -1,49 +1,44 @@
-<form>
-    <fieldset>
-        <legend>Edit Book</legend>
+<fieldset>
+    <legend>Edit Book</legend>
 
-        <div class='row'>
-            <div class='large-10 columns'>
-                <label>Title</label>
-                {{view Ember.TextField valueBinding='title'}}
-            </div>
-
-            <div class='large-2 columns'>
-                <label>Volume</label>
-                {{view Ember.TextField valueBinding='volume'}}
-            </div>
+    <div class='row'>
+        <div class='large-10 columns'>
+            <label>Title</label>
+            {{view Ember.TextField valueBinding='title'}}
         </div>
 
-
-        <div class='row'>
-            <div class='large-12 columns'>
-                <label>Code</label>
-                {{view Ember.TextField valueBinding='code'}}
-            </div>
+        <div class='large-2 columns'>
+            <label>Volume</label>
+            {{view Ember.TextField valueBinding='volume'}}
         </div>
+    </div>
 
-        <div class='row'>
-            <div class='large-12 columns'>
-                <label>Notes</label>
-                {{view Ember.TextArea valueBinding='notes' cols="80" rows="4"}}
-            </div>
+
+    <div class='row'>
+        <div class='large-12 columns'>
+            <label>Code</label>
+            {{view Ember.TextField valueBinding='code'}}
         </div>
+    </div>
 
-        <div class='row'>
-            <div class='large-12 columns'>
-                <label>Adult only</label>
-                {{view Ember.Checkbox checkedBinding='adult'}}
-            </div>
+    <div class='row'>
+        <div class='large-12 columns'>
+            <label>Notes</label>
+            {{view Ember.TextArea valueBinding='notes' cols="80" rows="4"}}
         </div>
+    </div>
 
-        <div class='row'>
-            <div class='large-12 columns'>
-                <label>Stock</label>
-                {{view Ember.TextField valueBinding='stock'}}
-            </div>
+    <div class='row'>
+        <div class='large-12 columns'>
+            <label>Adult only</label>
+            {{view Ember.Checkbox checkedBinding='adult'}}
         </div>
-    </fieldset>
+    </div>
 
-    <button {{action 'saveEdit'}}>Save</button>
-    <button {{action 'cancelEdit'}}>Cancel</button>
-</form>
+    <div class='row'>
+        <div class='large-12 columns'>
+            <label>Stock</label>
+            {{view Ember.TextField valueBinding='stock'}}
+        </div>
+    </div>
+</fieldset>

@@ -11,3 +11,8 @@ Library.CheckoutsNewController = Ember.ObjectController.extend
 
     @get('model').save().then =>
       @transitionToRoute('checkouts.checkout', @get('model'))
+
+Library.CheckoutsCheckoutController = Ember.ObjectController.extend
+  delete: ->
+    @get('content').deleteRecord()
+    @transitionToRoute('checkouts')
