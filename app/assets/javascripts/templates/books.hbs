@@ -1,7 +1,11 @@
-<ul>
-    {{#each controller}}
-        <li>{{#linkTo 'books.book' this}}{{title}}{{/linkTo}}</li>
-    {{/each}}
-</ul>
+<div id='filter_panel'>
+    <ul>
+        {{#each controller}}
+            <li>{{#linkTo 'books.book' this}}{{title}}{{/linkTo}}</li>
+        {{/each}}
+    </ul>
+</div>
 
-{{outlet}}
+<div id='item'>
+    {{outlet}}
+</div>

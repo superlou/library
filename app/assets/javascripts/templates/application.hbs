@@ -1,7 +1,11 @@
-<div id='menu-bar'>
-    {{#linkTo 'index'}}Home{{/linkTo}}
-    {{#linkTo 'books'}}Books{{/linkTo}}
-    {{#linkTo 'patrons'}}Patrons{{/linkTo}}
+<div id='primary_menu'>
+    <ul>
+        <li>{{#linkTo 'index'}}Home{{/linkTo}}</li>
+        <li>{{#linkTo 'books'}}Books{{/linkTo}}</li>
+        <li>{{#linkTo 'patrons'}}Patrons{{/linkTo}}</li>
+    </ul>
 </div>
 
-{{outlet}}
+<div id='content'>
+    {{outlet}}
+</div>

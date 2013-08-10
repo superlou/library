@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require reset
+ *= require_self
+ *= require_tree .
+ */
+
+body
+  position: absolute
+  width: 100%
+  height: 100%
+
+  a, a:visited
+    text-decoration: none
+    color: #ee3500
+
+  a:hover, a:active
+    color: #b03000
+
+#primary_menu
+  position: absolute
+  width: 120px
+  top: 0px
+  bottom: 0px
+  left: 0px
+  background: #303030
+
+  border-right: 1px solid #202020
+
+  a, a:visited
+    display: block
+    width: 100px
+    color: white
+    text-decoration: none
+    padding: 1em 10px
+    font-family: "Raleway", sans-serif
+
+  a:hover, a:active
+    border-top: 1px #202020
+    background: #383838
+
+
+#content
+  position: absolute
+  left: 120px
+  top: 0px
+  bottom: 0px
+  font-family: sans-serif
+
+#filter_panel
+  position: absolute
+  width: 200px
+  background: #f8f8f8
+  border-right: 1px solid #f0f0f0
+  top: 0px
+  bottom: 0px
+  padding: 20px
+
+  ul
+    li
+      padding: 0.4em 0em
+
+    li:nth-child(odd)
+      background: #e8e8e8
+
+    li:nth-child(even)
+      background: #f8f8f8
+
+#item
+  position: relative
+  top: 0px
+  left: 240px
+  padding: 1em
+
+h1
+  font-family: "Raleway", sans-serif
+  font-size: 3em
