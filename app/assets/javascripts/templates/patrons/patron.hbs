@@ -1,13 +1,12 @@
 {{#if isEditing}}
-    {{partial 'books/edit'}}
+    {{partial 'patrons/edit'}}
     <button {{action 'saveEdit'}}>Save</button>
     <button {{action 'cancelEdit'}}>Cancel</button>
 {{else}}
-    <h1>{{title}}</h1>
-    <p>{{code}}</p>
-    <p>{{notes}}</p>
-    <p>{{volume}}</p>
-    <p>{{adult}}</p>
+    {{name}}
+    {{code}}
+    {{gender}}
+    {{email}}
     <button {{action 'edit'}}>Edit</button>
     <button {{action 'delete'}}>Delete</button>
 {{/if}}

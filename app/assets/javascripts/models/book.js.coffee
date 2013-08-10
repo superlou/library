@@ -4,6 +4,7 @@ hasMany = Ember.hasMany
 Library.Book = Ember.Model.extend
   id: attr(Number)
   code: attr()
+  volume: attr()
   title: attr()
   adult: attr()
   notes: attr()

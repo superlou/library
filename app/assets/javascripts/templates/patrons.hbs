@@ -1,0 +1,7 @@
+<ul>
+    {{#each controller}}
+        <li>{{#linkTo 'patrons.patron' this}}{{name}}{{/linkTo}}</li>
+    {{/each}}
+</ul>
+
+{{outlet}}

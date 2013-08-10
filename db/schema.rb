@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807222139) do
+ActiveRecord::Schema.define(:version => 20130809004301) do
 
   create_table "books", :force => true do |t|
     t.string   "code"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(:version => 20130807222139) do
     t.integer  "volume"
     t.boolean  "adult"
     t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "patrons", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "gender"
+    t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

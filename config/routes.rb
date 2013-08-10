@@ -1,6 +1,7 @@
 Library::Application.routes.draw do
 
   resources :books
+  resources :patrons
 
   root :to => 'pages#index'
 
