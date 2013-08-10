@@ -35,6 +35,13 @@
                 {{view Ember.Checkbox checkedBinding='adult'}}
             </div>
         </div>
+
+        <div class='row'>
+            <div class='large-12 columns'>
+                <label>Stock</label>
+                {{view Ember.TextField valueBinding='stock'}}
+            </div>
+        </div>
     </fieldset>
 
     <button {{action 'saveEdit'}}>Save</button>

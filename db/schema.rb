@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809004301) do
+ActiveRecord::Schema.define(:version => 20130810153321) do
 
   create_table "books", :force => true do |t|
     t.string   "code"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20130809004301) do
     t.integer  "volume"
     t.boolean  "adult"
     t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "stock"
+  end
+
+  create_table "checkouts", :force => true do |t|
+    t.integer  "book_id"
+    t.integer  "patron_id"
+    t.string   "status"
+    t.datetime "closed_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

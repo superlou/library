@@ -1,0 +1,15 @@
+<div id='filter_panel'>
+    <ul>
+        {{#each controller}}
+            <li>
+                {{#linkTo 'checkouts.checkout' this}}
+                    {{book.title}}, {{patron.name}} [{{status}}]
+                {{/linkTo}}
+            </li>
+        {{/each}}
+    </ul>
+</div>
+
+<div id='item'>
+    {{outlet}}
+</div>

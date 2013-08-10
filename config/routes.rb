@@ -2,6 +2,7 @@ Library::Application.routes.draw do
 
   resources :books
   resources :patrons
+  resources :checkouts
 
   root :to => 'pages#index'
 

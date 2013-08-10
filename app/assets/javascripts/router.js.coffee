@@ -6,7 +6,11 @@ Library.Router.map ()->
     @route 'new'
 
   @resource 'patrons', ->
-    @resource 'patrons.patron', {path: ':patron_id'}, ->
+    @resource 'patrons.patron', {path: ':patron_id'}
+    @route 'new'
+
+  @resource 'checkouts', ->
+    @resource 'checkouts.checkout', {path: ':checkout_id'}
     @route 'new'
 
 Library.BooksRoute = Ember.Route.extend
@@ -24,3 +28,11 @@ Library.PatronsRoute = Ember.Route.extend
 Library.PatronsNewRoute = Ember.Route.extend
   model: (params)->
     Library.Patron.create()
+
+Library.CheckoutsRoute = Ember.Route.extend
+  model: (params)->
+    Library.Checkout.findAll()
+
+Library.CheckoutsNewRoute = Ember.Route.extend
+  model: (params)->
+    Library.Checkout.create()
