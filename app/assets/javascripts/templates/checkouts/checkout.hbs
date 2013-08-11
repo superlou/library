@@ -1,3 +1,20 @@
-<p>Checked out book: {{book.title}} {{book.volume}}</p>
+<p>Checked out book: {{book.full_title}}</p>
 <p>Checked out by: {{patron.name}}</p>
-<button {{action delete}}>Delete</button>
+<p>Checked out at: {{timeAgo created_at}}, {{shortDateTime created_at}}</p>
+
+{{#if isOpen}}
+    <button {{action return}}>Return</button>
+    <button {{action lose}}>Lose</button>
+{{else}}
+    <p>Closed at: {{timeAgo closed_at}}, {{shortDateTime closed_at}}</p>
+    <p>Checked out for: {{humanizeDuration duration}}</p>
+    <button {{action reopen}}>Reopen</button>
+{{/if}}
+
+{{#if showLoseDialog}}
+    <button {{action loseCloseOnly}}>Close checkout only</button>
+    <button {{action loseChangeStock}}>Close and decrement stock</button>
+    <button {{action loseCancel}}>Cancel</button>
+{{/if}}
+
+<button {{action delete}} class='secondary'>Delete</button>

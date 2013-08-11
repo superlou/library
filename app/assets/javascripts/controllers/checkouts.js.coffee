@@ -31,3 +31,36 @@ Library.CheckoutsCheckoutController = Ember.ObjectController.extend
   delete: ->
     @get('content').deleteRecord()
     @transitionToRoute('checkouts')
+
+  return: ->
+    @set('content.closed_at', moment())
+    @set('content.status', 'returned')
+    @get('content').save()
+
+  reopen: ->
+    @set('content.closed_at', null)
+    @set('content.status', 'out')
+    @get('content').save()
+
+  lose: ->
+    @set('showLoseDialog', true)
+
+  loseOnly: ->
+    @set('showLoseDialog', false)
+    @set('content.closed_at', moment())
+    @set('content.status', 'lost')
+    @get('content').save()
+
+  loseChangeStock: ->
+    @set('showLoseDialog', false)
+
+    stock = @get('content.book.stock')
+    @set('content.book.stock', stock - 1)
+    @get('content.book').save()
+
+    @set('content.closed_at', moment())
+    @set('content.status', 'lost')
+    @get('content').save()
+
+  loseCancel: ->
+    @set('showLoseDialog', false)
