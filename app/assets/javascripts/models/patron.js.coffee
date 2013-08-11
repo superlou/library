@@ -8,5 +8,9 @@ Library.Patron = Ember.Model.extend
   gender: attr()
   email: attr()
 
+Library.Patron.reopenClass
+  findByCode: (code) ->
+    @find('code:' + code)
+
 Library.Patron.url = '/patrons'
-Library.Patron.adapter = Ember.RESTAdapter.create()
+Library.Patron.adapter = Library.RESTAdapter.create()

@@ -6,7 +6,13 @@ class PatronsController < ApplicationController
   end
 
   def show
-    respond_with Patron.find params[:id]
+    if params[:id].first(5) == 'code:'
+      @patron = Patron.find_by_code(params[:id][5..-1])
+    else
+      @patron = Patron.find(params[:id])
+    end
+
+    respond_with @patron
   end
 
   def create

@@ -2,12 +2,16 @@ class BooksController < ApplicationController
   respond_to :json
 
   def index
-    @books = Book.all
-    respond_with @books
+    respond_with Book.all
   end
 
   def show
-    @book = Book.find params[:id]
+    if params[:id].first(5) == 'code:'
+      @book = Book.find_by_code(params[:id][5..-1])
+    else
+      @book = Book.find(params[:id])
+    end
+
     respond_with @book
   end
 

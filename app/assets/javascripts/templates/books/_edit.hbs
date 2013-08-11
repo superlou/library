@@ -2,6 +2,10 @@
     <legend>Edit Book</legend>
 
     <div class='row'>
+        {{errors.responseText}}
+    </div>
+
+    <div class='row'>
         <div class='large-10 columns'>
             <label>Title</label>
             {{view Ember.TextField valueBinding='title'}}

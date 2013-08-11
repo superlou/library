@@ -6,10 +6,10 @@
     </form>
 {{else}}
     <h1>{{full_title}}</h1>
-    <p>{{code}}</p>
-    <p>{{notes}}</p>
-    <p>{{adult}}</p>
-    <p>{{stock}}</p>
+    <p>Code: {{code}}</p>
+    <p>Notes: {{notes}}</p>
+    <p>Adult only: {{adult}}</p>
+    <p>Stock: {{stock}}</p>
     <button {{action 'edit'}}>Edit</button>
     <button {{action 'delete'}}>Delete</button>
 {{/if}}

@@ -20,5 +20,10 @@ Library.Book = Ember.Model.extend
 
   ).property('title', 'volume')
 
+Library.Book.reopenClass
+  findByCode: (code) ->
+    @find('code:' + code)
+
+
 Library.Book.url = '/books'
-Library.Book.adapter = Ember.RESTAdapter.create()
+Library.Book.adapter = Library.RESTAdapter.create()

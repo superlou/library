@@ -1,16 +1,31 @@
 Library.CheckoutsController = Ember.ArrayController.extend()
 
 Library.CheckoutsNewController = Ember.ObjectController.extend
-  book_id: ''
-  patron_id: ''
+  book_code: ''
+  patron_code: ''
 
   save: ->
     @set 'model.status', 'out'
-    @set 'model.book', Library.Book.find(@get('book_id'))
-    @set 'model.patron', Library.Patron.find(@get('patron_id'))
 
-    @get('model').save().then =>
-      @transitionToRoute('checkouts.checkout', @get('model'))
+    @get('model').save().then(
+      (val)=>
+        @transitionToRoute('checkouts.checkout', @get('model'))
+      (err)=> @set 'errors', err
+    )
+
+  set_model_book: (->
+    book = Library.Book.findByCode(@get('book_code'))
+    @set 'model.book', book
+  ).observes('book_code')
+
+  set_model_patron: (->
+    patron = Library.Patron.findByCode(@get('patron_code'))
+    @set 'model.patron', patron
+  ).observes('patron_code')
+
+  saveDisabled: (->
+    return not @get('model.isValid')
+  ).property('model.isValid')
 
 Library.CheckoutsCheckoutController = Ember.ObjectController.extend
   delete: ->
