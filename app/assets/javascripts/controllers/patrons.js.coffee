@@ -2,8 +2,10 @@ Library.PatronsController = Ember.ArrayController.extend()
 
 Library.PatronsNewController = Ember.ObjectController.extend
   save: ->
-    @get('model').save().then =>
-      @transitionToRoute('patrons.patron', @get('model'))
+    @get('model').save().then(
+      (val)=> @transitionToRoute('patrons.patron', @get('model'))
+      (err)=> @set 'errors', err
+    )
 
 Library.PatronsPatronController = Ember.ObjectController.extend
   delete: ->
@@ -14,9 +16,16 @@ Library.PatronsPatronController = Ember.ObjectController.extend
     @set 'isEditing', true
 
   saveEdit: ->
-    @get('content').save().then =>
-      @transitionToRoute('patrons.patron', @get('content'))
-      @set 'isEditing', false
+    @get('content').save().then(
+      (val)=>
+        @transitionToRoute('patrons.patron', @get('content'))
+        @set 'isEditing', false
+      (err)=> @set 'errors', err
+    )
+
+  resetErrors: (->
+    @set 'errors', null
+  ).observes('isEditing')
 
   cancelEdit: ->
     @set 'isEditing', false

@@ -1,4 +1,27 @@
-<p>Name: {{view Ember.TextField valueBinding='name'}}</p>
-<p>Code: {{view Ember.TextField valueBinding='code'}}</p>
-<p>Gender: {{view Ember.TextField valueBinding='gender'}}</p>
-<p>Email: {{view Ember.TextField valueBinding='email'}}</p>
+<fieldset>
+    <legend>Edit Patron</legend>
+
+    <div class='row'>
+        {{errors.responseText}}
+    </div>
+
+    <div class='row'>
+        <label>Name</label>
+        {{view Ember.TextField valueBinding='name'}}
+    </div>
+
+    <div class='row'>
+        <label>Code</label>
+        {{view Ember.TextField valueBinding='code'}}
+    </div>
+
+    <div class='row'>
+        <label>Gender</label>
+        {{view Ember.TextField valueBinding='gender'}}
+    </div>
+
+    <div class='row'>
+        <label>Email</label>
+        {{view Ember.TextField valueBinding='email'}}
+    </div>
+</fieldset>
