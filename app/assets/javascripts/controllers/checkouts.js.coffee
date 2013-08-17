@@ -16,7 +16,7 @@ Library.CheckoutsNewController = Ember.ObjectController.extend
   set_model_book: (->
     book = Library.Book.findByCode(@get('book_code'))
     console.log book
-    @set 'content.book', book
+    @set 'model.book', book
   ).observes('book_code')
 
   set_model_patron: (->
@@ -30,38 +30,38 @@ Library.CheckoutsNewController = Ember.ObjectController.extend
 
 Library.CheckoutsCheckoutController = Ember.ObjectController.extend
   delete: ->
-    @get('content').deleteRecord()
+    @get('model').deleteRecord()
     @transitionToRoute('checkouts')
 
   return: ->
-    @set('content.closed_at', moment())
-    @set('content.status', 'returned')
-    @get('content').save()
+    @set('model.closed_at', moment())
+    @set('model.status', 'returned')
+    @get('model').save()
 
   reopen: ->
-    @set('content.closed_at', null)
-    @set('content.status', 'out')
-    @get('content').save()
+    @set('model.closed_at', null)
+    @set('model.status', 'out')
+    @get('model').save()
 
   lose: ->
     @set('showLoseDialog', true)
 
   loseOnly: ->
     @set('showLoseDialog', false)
-    @set('content.closed_at', moment())
-    @set('content.status', 'lost')
-    @get('content').save()
+    @set('model.closed_at', moment())
+    @set('model.status', 'lost')
+    @get('model').save()
 
   loseChangeStock: ->
     @set('showLoseDialog', false)
 
-    stock = @get('content.book.stock')
-    @set('content.book.stock', stock - 1)
-    @get('content.book').save()
+    stock = @get('model.book.stock')
+    @set('model.book.stock', stock - 1)
+    @get('model.book').save()
 
-    @set('content.closed_at', moment())
-    @set('content.status', 'lost')
-    @get('content').save()
+    @set('model.closed_at', moment())
+    @set('model.status', 'lost')
+    @get('model').save()
 
   loseCancel: ->
     @set('showLoseDialog', false)
