@@ -37,6 +37,4 @@ Library.CheckoutsNewRoute = Ember.Route.extend
   setupController: (controller)->
     controller.set('book_code', '')
     controller.set('patron_code', '')
-
-  model: (params)->
-    Library.Checkout.create()
+    controller.set('model', Library.Checkout.create())

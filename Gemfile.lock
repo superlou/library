@@ -53,12 +53,12 @@ GEM
       execjs (>= 1.2)
       handlebars-source
       railties (>= 3.1)
-    ember-source (0.0.9)
-      handlebars-source (= 1.0.0.rc4)
+    ember-source (1.0.0.rc7)
+      handlebars-source (= 1.0.12)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    handlebars-source (1.0.0.rc4)
+    handlebars-source (1.0.12)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -69,8 +69,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.23)
-    multi_json (1.7.8)
+    mime-types (1.24)
+    multi_json (1.7.9)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -129,7 +129,7 @@ DEPENDENCIES
   active_model_serializers
   coffee-rails (~> 3.2.1)
   ember-rails
-  ember-source
+  ember-source (= 1.0.0.rc7)
   jquery-rails (= 2.2.2)
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
