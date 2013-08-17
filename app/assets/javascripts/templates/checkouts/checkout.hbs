@@ -1,5 +1,5 @@
-<p>Checked out book: {{book.full_title}}</p>
-<p>Checked out by: {{patron.name}}</p>
+<p>Checked out book: {{#linkTo 'books.book' book}}{{book.full_title}}{{/linkTo}}</p>
+<p>Checked out by: {{#linkTo 'patrons.patron' patron}}{{patron.name}}{{/linkTo}}</p>
 <p>Checked out at: {{timeAgo created_at}}, {{shortDateTime created_at}}</p>
 
 {{#if isOpen}}

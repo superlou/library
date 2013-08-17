@@ -15,7 +15,6 @@ Library.CheckoutsNewController = Ember.ObjectController.extend
 
   set_model_book: (->
     book = Library.Book.findByCode(@get('book_code'))
-    console.log book
     @set 'model.book', book
   ).observes('book_code')
 

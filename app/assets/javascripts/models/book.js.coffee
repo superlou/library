@@ -10,6 +10,13 @@ Library.Book = Ember.Model.extend
   adult: attr()
   notes: attr()
 
+  checkouts: hasMany('Library.Checkout',{key: 'checkout_ids'})
+
+  available: (->
+    copies_out = @get('checkouts').filterProperty('status', 'out').get('length')
+    @get('stock') - copies_out
+  ).property('stock', 'checkouts.@each.status')
+
   full_title: (->
     volume = @get('volume')
 
