@@ -13,6 +13,9 @@ Library.Router.map ()->
     @resource 'checkouts.checkout', {path: ':checkout_id'}
     @route 'new'
 
+  @route 'checkout'
+  @route 'checkin'
+
 Library.BooksRoute = Ember.Route.extend
   model: (params)->
     Library.Book.findAll()
@@ -35,6 +38,13 @@ Library.CheckoutsRoute = Ember.Route.extend
 
 Library.CheckoutsNewRoute = Ember.Route.extend
   setupController: (controller)->
+    controller.set('book_code', '')
+    controller.set('patron_code', '')
+    controller.set('model', Library.Checkout.create())
+
+Library.CheckoutRoute = Ember.Route.extend
+  setupController: (controller)->
+    console.log 'here'
     controller.set('book_code', '')
     controller.set('patron_code', '')
     controller.set('model', Library.Checkout.create())
