@@ -1,4 +1,28 @@
-<form {{action 'save' on='submit'}}>
-    {{partial 'checkouts/edit'}}
-    <button {{action save}} {{bindAttr disabled="saveDisabled"}}>Save</button>
-</form>
+<h1>Create Checkout</h1>
+
+<div class='row'>
+    {{errors.responseText}}
+</div>
+
+<div class='row'>
+    <div class='small-6 columns'>
+        <label>Book</label>
+        {{view Ember.TextField valueBinding='book_code'
+          placeholder='book code'}}
+        {{model.book.full_title}}
+        {{#if model.book.adult}}
+            <p><span class='alert label'>
+                    For adults only
+                </span></p>
+        {{/if}}
+    </div>
+
+    <div class='small-6 columns'>
+        <label>Patron</label>
+        {{view Ember.TextField valueBinding='patron_code'
+          placeholder='patron code'}}
+        {{model.patron.name}}
+    </div>
+</div>
+
+<button {{action save}} {{bindAttr disabled="saveDisabled"}}>Save</button>
