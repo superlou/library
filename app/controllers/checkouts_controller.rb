@@ -2,7 +2,13 @@ class CheckoutsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Checkout.all
+    if params[:status] == 'out'
+      checkouts = Checkout.where(status: 'out')
+    else
+      checkouts = Checkout.all
+    end
+
+    respond_with checkouts
   end
 
   def show
@@ -11,7 +17,6 @@ class CheckoutsController < ApplicationController
 
   def create
     respond_with Checkout.create(checkout_params)
-    puts checkout_params
   end
 
   def update
@@ -24,6 +29,6 @@ class CheckoutsController < ApplicationController
 
   private
   def checkout_params
-    params.require(:checkout).permit(:patron_id, :book_id, :status, :closed_at, :created_at)
+    params.require(:checkout).permit(:patron, :book, :patron_id, :book_id, :status, :closed_at, :created_at)
   end
 end

@@ -1,0 +1,60 @@
+<h1>Find Checkout</h1>
+
+<div class='row'>
+    <div class='small-12 columns'>
+        {{view Ember.TextField valueBinding='checkoutInfo'
+          placeholder='book code or title, patron code or name'}}
+    </div>
+</div>
+
+<table>
+    {{#each matched_checkouts}}
+        <tr>
+            <td>{{#linkTo 'books.book' book}}{{book.full_title}}{{/linkTo}}</td>
+            <td>{{#linkTo 'patrons.patron' patron}}{{patron.name}}{{/linkTo}}</td>
+            <td>{{humanizeDuration duration}}</td>
+            <td>
+                <button class='small' {{action return this}}>Return</button>
+                <button class='small' data-reveal-id='loseCheckoutDialog'
+                    {{action setCheckoutToLose this}}>
+                    Lose
+                </button>
+                <button class='small' {{action delete this}}>Delete</button>
+            </td>
+        </tr>
+    {{/each}}
+</table>
+
+<div id="loseCheckoutDialog" class="reveal-modal">
+    <h2>Mark this book lost</h2>
+    <p class="lead">
+        <strong>{{checkoutToLose.book.full_title}}</strong> checked out by
+        <strong>{{checkoutToLose.patron.name}}</strong>
+    </p>
+
+    <div class='row'>
+        <div class='small-3 columns'>
+            <button {{action loseChangeStock checkoutToLose}}>Decrement stock</button>
+        </div>
+        <div class='small-9 columns'>
+            <p>
+                Close the checkout and decrease the stock for the book by one.  This lets the system know that
+                there is one less copy of this book to lend.
+            </p>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='small-3 columns'>
+            <button {{action loseLostOnly checkoutToLose}}>Mark lost only</button>
+        </div>
+        <div class='small-9 columns'>
+            <p>
+                This will close the checkout but will not affect the stock information for this book.
+                It will be like replacing the book but noting that the checkout was not properly returned.
+            </p>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal">&#215;</a>
+</div>

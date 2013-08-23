@@ -6,15 +6,18 @@
     </div>
 
     <div class='row'>
-        <div class='large-12 columns'>
+        <div class='small-6 columns'>
             <label>Book Code</label>
             {{view Ember.TextField valueBinding='book_code'}}
             {{model.book.full_title}}
+            {{#if model.book.adult}}
+                <p><span class='alert label'>
+                    For adults only
+                </span></p>
+            {{/if}}
         </div>
-    </div>
 
-    <div class='row'>
-        <div class='large-12 columns'>
+        <div class='small-6 columns'>
             <label>Patron Code</label>
             {{view Ember.TextField valueBinding='patron_code'}}
             {{model.patron.name}}

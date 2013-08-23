@@ -1,5 +1,5 @@
 class Checkout < ActiveRecord::Base
-  attr_accessible :book_id, :patron_id, :status, :closed_at, :created_at, :patron, :book
+  attr_accessible :book, :patron, :book_id, :patron_id, :status, :closed_at, :created_at, :patron, :book
 
   belongs_to :book
   belongs_to :patron

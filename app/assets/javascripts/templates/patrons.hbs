@@ -1,4 +1,4 @@
-<div id='filter_panel'>
+<div class='small-3 columns'>
     <ul>
         {{#each controller}}
             <li>{{#linkTo 'patrons.patron' this}}{{name}}{{/linkTo}}</li>
@@ -6,6 +6,6 @@
     </ul>
 </div>
 
-<div id='item'>
+<div class='small-9 columns'>
     {{outlet}}
 </div>
