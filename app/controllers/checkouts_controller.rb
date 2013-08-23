@@ -29,6 +29,6 @@ class CheckoutsController < ApplicationController
 
   private
   def checkout_params
-    params.require(:checkout).permit(:patron, :book, :patron_id, :book_id, :status, :closed_at, :created_at)
+    params.require(:checkout).permit(:patron_id, :book_id, :status, :closed_at, :created_at)
   end
 end
