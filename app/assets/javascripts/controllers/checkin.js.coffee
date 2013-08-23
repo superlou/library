@@ -41,7 +41,6 @@ Library.CheckinController = Ember.ArrayController.extend
     checkout.save()
 
     @set('model', Library.Checkout.find({status: 'out'}))
-    $('#loseCheckoutDialog').foundation('reveal','close')
 
   loseChangeStock: (checkout)->
     stock = checkout.get('book.stock')
@@ -53,4 +52,3 @@ Library.CheckinController = Ember.ArrayController.extend
     checkout.save()
 
     @set('model', Library.Checkout.find({status: 'out'}))
-    $('#loseCheckoutDialog').foundation('reveal','close')
