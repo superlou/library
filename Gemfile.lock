@@ -51,6 +51,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    daemons (1.1.9)
     ember-data-source (0.13)
       ember-source
     ember-rails (0.13.0)
@@ -64,6 +65,7 @@ GEM
     ember-source (1.0.0.rc7)
       handlebars-source (= 1.0.12)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -142,6 +144,10 @@ GEM
       actionpack (~> 3.0)
       activemodel (~> 3.0)
       railties (~> 3.0)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.14)
@@ -171,5 +177,6 @@ DEPENDENCIES
   shoulda
   sqlite3
   strong_parameters
+  thin
   uglifier (>= 1.0.3)
   zurb-foundation (~> 4.0.0)

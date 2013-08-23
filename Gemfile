@@ -4,6 +4,8 @@ gem 'rails', '3.2.13'
 gem 'active_model_serializers'
 gem 'strong_parameters'
 
+gem 'thin'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
