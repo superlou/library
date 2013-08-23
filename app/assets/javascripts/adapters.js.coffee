@@ -8,13 +8,4 @@ Library.RESTAdapter = Ember.RESTAdapter.extend
 
     record.load(id, dataToLoad)
 
-Library.CheckoutAdapter = Ember.RESTAdapter.extend
-  createRecord: (record)->
-    url = @buildURL(record.constructor)
-
-    json = record.toJSON()
-
-
-    return @ajax(url, record.toJSON(), "POST").then (data)=>
-      @didCreateRecord(record, data)
-      return record
+Library.CheckoutAdapter = Ember.RESTAdapter.extend()

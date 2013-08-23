@@ -8,7 +8,7 @@
 </div>
 
 <table>
-    {{#each matched_checkouts}}
+    {{#each matchedCheckouts}}
         <tr>
             <td>{{#linkTo 'books.book' book}}{{book.full_title}}{{/linkTo}}</td>
             <td>{{#linkTo 'patrons.patron' patron}}{{patron.name}}{{/linkTo}}</td>
