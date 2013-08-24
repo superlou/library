@@ -1,5 +1,7 @@
 class Book < ActiveRecord::Base
-  attr_accessible :adult, :code, :notes, :title, :volume, :stock
+  attr_accessible :adult, :code, :notes, :title, :volume, :stock, :created_at,
+                  :subtitle, :oversized, :non_standard_size, :category, :publisher,
+                  :author, :language
 
   validates_presence_of :title, :code
   validates_uniqueness_of :code

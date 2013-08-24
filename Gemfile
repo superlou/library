@@ -14,6 +14,8 @@ gem 'sqlite3'
 gem 'ember-rails'
 gem 'ember-source', '1.0.0.rc7'
 
+gem 'chronic'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

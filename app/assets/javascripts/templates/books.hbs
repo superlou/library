@@ -1,11 +1,11 @@
-<div class='small-3 columns'>
+<div class='small-4 columns'>
     <ul>
-        {{#each controller}}
+        {{#collection Ember.ListView contentBinding='controller' height=500 rowHeight=40}}
             <li>{{#linkTo 'books.book' this}}{{full_title}}{{/linkTo}}</li>
-        {{/each}}
+        {{/collection}}
     </ul>
 </div>
 
-<div class='small-9 columns'>
+<div class='small-8 columns'>
     {{outlet}}
 </div>
