@@ -20,7 +20,7 @@ books.each do |book|
   title = book['Title']
   code = book['Number']
   subtitle = book['Subtitle']
-  volume = (book['Volume'] != 0) ? book['Volume'] : nil
+  volume = (book['Volume'] != '0') ? book['Volume'] : nil
   oversized = (book['Oversized'] == '1')
   non_standard_size = (book['Non Standard Size'] == '1')
   category = book['Category']

@@ -2,26 +2,39 @@ Library.BooksController = Ember.ArrayController.extend
 
   needs: 'booksIndex'
   filterNameBinding: 'controllers.booksIndex.filterName'
+  filterVolumeBinding: 'controllers.booksIndex.filterVolume'
 
   filteredModel: (->
-    console.log @get('filterName')
-
     result = @get('model').filter (item, index, enumerable)=>
       title = item.get('title').toLowerCase()
 
-      return true if (title.indexOf(@get('filterName').toLowerCase()) >= 0)
+      if title.indexOf(@get('filterName').toLowerCase()) < 0
+        return false
 
-    result = result.sort (a, b)->
-      titleA = a.get('title').toLowerCase()
-      titleB = b.get('title').toLowerCase()
 
-      return -1 if titleA < titleB
-      return  1 if titleA > titleB
-      return 0
-  ).property('model.isLoaded', 'filterName')
+      filterVolume = @get('filterVolume').toLowerCase()
+
+      if filterVolume
+        if item.get('volume')
+          volume = item.get('volume').toString().toLowerCase()
+        else
+          return false
+
+        if volume.indexOf(filterVolume) < 0
+          return false
+
+
+      true
+  ).property('model.isLoaded', 'filterName', 'filterVolume')
 
 Library.BooksIndexController = Ember.Controller.extend
   filterName: ''
+  filterVolume: ''
+
+Library.BooksSearchController = Ember.Controller.extend
+  search: ->
+    # this is waiting on QueryParams implementation
+    @transitionToRoute('books', {test: 'here'})
 
 Library.BooksBookController = Ember.ObjectController.extend
   delete: ->

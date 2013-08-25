@@ -1,5 +1,26 @@
-{{#linkTo 'books.new'}}New Book{{/linkTo}}
+<div class='row'>
+    <div class='small-6 columns'>
+        <h1>Filter Books</h1>
+    </div>
+    <div class='small-6 columns'>
+        {{#linkTo 'books.new' class='button right'}}New Book{{/linkTo}}
+    </div>
+</div>
 
-<p>
-    {{view Ember.TextField valueBinding='filterName' placeholder='book name'}}
-</p>
+<div class='row'>
+    <div class='small-2 columns'>
+        <label for="filterName" class="right inline">Title</label>
+    </div>
+    <div class='small-10 columns'>
+        {{view Ember.TextField valueBinding='filterName' placeholder='book title'}}
+    </div>
+</div>
+
+<div class='row'>
+    <div class='small-2 columns'>
+        <label for="filterName" class="right inline">Volume</label>
+    </div>
+    <div class='small-10 columns'>
+        {{view Ember.TextField valueBinding='filterVolume' placeholder='book volume'}}
+    </div>
+</div>

@@ -1,0 +1,7 @@
+{{#linkTo 'books.new'}}New Book{{/linkTo}}
+
+<form {{action 'search' on='submit'}}>
+    <p>
+        {{view Ember.TextField valueBinding='name' placeholder='book name'}}
+    </p>
+</form>

@@ -1,9 +1,12 @@
 # For more information see: http://emberjs.com/guides/routing/
 
 Library.Router.map ()->
+
+  @route 'books.search', {path: '/books/search'}
+
   @resource 'books', ->
     @route 'new'
-    @resource 'books.book', {path: 'books/:book_id'}
+    @resource 'books.book', {path: ':book_id'}
 
   @resource 'patrons', ->
     @resource 'patrons.patron', {path: ':patron_id'}
