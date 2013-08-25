@@ -1,6 +1,6 @@
 <div class='small-4 columns'>
     <ul>
-        {{#collection Ember.ListView contentBinding='controller' height=500 rowHeight=40}}
+        {{#collection Ember.ListView contentBinding='filteredModel' height=500 rowHeight=40}}
             <li>{{#linkTo 'books.book' this}}{{full_title}}{{/linkTo}}</li>
         {{/collection}}
     </ul>

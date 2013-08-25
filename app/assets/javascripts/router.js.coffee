@@ -2,8 +2,8 @@
 
 Library.Router.map ()->
   @resource 'books', ->
-    @resource 'books.book', {path: ':book_id'}
     @route 'new'
+    @resource 'books.book', {path: 'books/:book_id'}
 
   @resource 'patrons', ->
     @resource 'patrons.patron', {path: ':patron_id'}
