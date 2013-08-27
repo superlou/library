@@ -1,6 +1,6 @@
 # For more information see: http://emberjs.com/guides/routing/
 
-client = new Faye.Client('http://' + window.location.host + ':9292/faye')
+client = new Faye.Client('http://' + window.location.hostname + ':9292/faye')
 
 Library.Router.map ()->
 
