@@ -16,15 +16,21 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-    respond_with Checkout.create(checkout_params)
+    checkout = Checkout.create(checkout_params)
+    broadcast('/checkouts/update', {id: checkout.id})
+    respond_with checkout
   end
 
   def update
-    respond_with Checkout.update(params[:id], checkout_params)
+    checkout = Checkout.update(params[:id], checkout_params)
+    broadcast('/checkouts/update', {id: checkout.id})
+    respond_with checkout
   end
 
   def destroy
-    respond_with Checkout.destroy(params[:id])
+    checkout = Checkout.destroy(params[:id])
+    broadcast('/checkouts/update', {id: checkout.id})
+    respond_with checkout
   end
 
   private

@@ -1,5 +1,7 @@
 # For more information see: http://emberjs.com/guides/routing/
 
+client = new Faye.Client('http://localhost:9292/faye')
+
 Library.Router.map ()->
 
   @route 'books.search', {path: '/books/search'}
@@ -20,16 +22,34 @@ Library.Router.map ()->
   @route 'checkin'
 
 Library.BooksRoute = Ember.Route.extend
-  model: (params)->
-    Library.Book.findAll()
+  setupController: (controller)->
+    controller.set 'model', Library.Book.findAll()
+
+    client.subscribe '/books/new', (data)->
+      model = controller.get('model').reload()
+
+    client.subscribe '/books/update', (data)->
+      model = controller.get('model').reload()
+
+    client.subscribe '/books/delete', (data)->
+      model = controller.get('model').reload()
 
 Library.BooksNewRoute = Ember.Route.extend
   model: (params)->
     Library.Book.create()
 
 Library.PatronsRoute = Ember.Route.extend
-  model: (params)->
-    Library.Patron.findAll()
+  setupController: (controller)->
+    controller.set 'model', Library.Patron.findAll()
+
+    client.subscribe '/patrons/new', (data)->
+      model = controller.get('model').reload()
+
+    client.subscribe '/patrons/update', (data)->
+      model = controller.get('model').reload()
+
+    client.subscribe '/patrons/delete', (data)->
+      model = controller.get('model').reload()
 
 Library.PatronsNewRoute = Ember.Route.extend
   model: (params)->
@@ -52,5 +72,8 @@ Library.CheckoutRoute = Ember.Route.extend
     controller.set('model', Library.Checkout.create())
 
 Library.CheckinRoute = Ember.Route.extend
-  model: (params)->
-    Library.Checkout.find({status: 'out'})
+  setupController: (controller)->
+    controller.set 'model', Library.Checkout.find({status: 'out'})
+
+    client.subscribe '/checkouts/update', (data)->
+      controller.set 'model', Library.Checkout.find({status: 'out'})

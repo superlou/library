@@ -20,7 +20,7 @@ Library.CheckinController = Ember.ArrayController.extend
         return true if (patron_code.indexOf(info) >= 0)
 
       false
-  ).property('checkoutInfo', 'model.isLoaded', 'model.@each.isValid')
+  ).property('checkoutInfo', 'model.isLoaded', 'model.@each.isValid', 'model.@each.isDone')
 
   return: (checkout)->
     checkout.set('closed_at', moment())

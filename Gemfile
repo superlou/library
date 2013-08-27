@@ -5,6 +5,7 @@ gem 'active_model_serializers'
 gem 'strong_parameters'
 
 gem 'thin'
+gem 'faye'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

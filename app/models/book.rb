@@ -11,6 +11,11 @@ class Book < ActiveRecord::Base
 
   def available
     stock_checked_out = checkouts.select{|c| c.status == 'out'}.count
-    stock - stock_checked_out
+
+    if stock
+      stock - stock_checked_out
+    else
+      nil
+    end
   end
 end

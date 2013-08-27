@@ -16,14 +16,19 @@ class PatronsController < ApplicationController
   end
 
   def create
-    respond_with Patron.create(patron_params)
+    patron = Patron.create(patron_params)
+    broadcast('/patrons/new', {id: patron.id}) unless patron.new_record?
+    respond_with patron
   end
 
   def update
-    respond_with Patron.update(params[:id], patron_params)
+    patron = Patron.update(params[:id], patron_params)
+    broadcast('/patrons/update', {id: patron.id})
+    respond_with patron
   end
 
   def destroy
+    broadcast('/patrons/delete', {id: params[:id]})
     respond_with Patron.destroy(params[:id])
   end
 

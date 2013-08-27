@@ -16,15 +16,21 @@ class BooksController < ApplicationController
   end
 
   def create
-    respond_with Book.create(book_params)
+    book = Book.create(book_params)
+    broadcast('/books/new', {id: book.id}) unless book.new_record?
+    respond_with book
   end
 
   def update
-    respond_with Book.update(params[:id], book_params)
+    book = Book.update(params[:id], book_params)
+    broadcast('/books/update', {id: book.id})
+    respond_with book
   end
 
   def destroy
-    respond_with Book.destroy(params[:id])
+    book = Book.destroy(params[:id])
+    broadcast('/books/delete', {id: book.id})
+    respond_with book
   end
 
   private
