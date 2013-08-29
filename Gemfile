@@ -30,6 +30,7 @@ group :assets do
 
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.0.0'
+  gem 'foundation-icons-sass-rails'
 end
 
 gem 'jquery-rails', '2.2.2'

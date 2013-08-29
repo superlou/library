@@ -94,6 +94,9 @@ GEM
     faye-websocket (0.6.3)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.2.0)
+    foundation-icons-sass-rails (3.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     fssm (0.2.10)
     handlebars-source (1.0.12)
     hashie (2.0.5)
@@ -196,6 +199,7 @@ DEPENDENCIES
   ember-source (= 1.0.0.rc7)
   factory_girl_rails
   faye
+  foundation-icons-sass-rails
   jquery-rails (= 2.2.2)
   minitest-reporters
   rails (= 3.2.13)

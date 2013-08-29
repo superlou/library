@@ -1,5 +1,6 @@
 // Required global settings and mixins for Foundation
 @import "foundation/foundation-global";
+@import 'foundation-icons';
 
 // Settings file to override Foundation variables
 
@@ -1042,4 +1043,5 @@ $topbar-link-color-active: #000;
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
+@import 'foundation';
 @import 'foundation';

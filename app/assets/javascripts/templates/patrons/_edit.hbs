@@ -1,27 +1,58 @@
-<fieldset>
-    <legend>Edit Patron</legend>
+<div class='row'>
+    {{errors.responseText}}
+</div>
 
-    <div class='row'>
-        {{errors.responseText}}
+<div class='row'>
+    <div class='small-1 columns'>
+        <label class='inline'>Name</label>
     </div>
-
-    <div class='row'>
-        <label>Name</label>
+    <div class='small-11 columns'>
         {{view Ember.TextField valueBinding='name'}}
     </div>
+</div>
 
-    <div class='row'>
-        <label>Code</label>
+<div class='row'>
+    <div class='small-1 columns'>
+        <label class='inline'>Code</label>
+    </div>
+    <div class='small-11 columns'>
         {{view Ember.TextField valueBinding='code'}}
     </div>
+</div>
 
-    <div class='row'>
-        <label>Gender</label>
-        {{view Ember.TextField valueBinding='gender'}}
+<div class='row'>
+    <div class='small-1 columns'>
+        <label class='inline'>Email</label>
     </div>
-
-    <div class='row'>
-        <label>Email</label>
+    <div class='small-11 columns'>
         {{view Ember.TextField valueBinding='email'}}
     </div>
-</fieldset>
+</div>
+
+<div class='row'>
+    <div class='small-1 columns'>
+        <label class='inline'>Adult</label>
+    </div>
+    <div class='small-11 columns'>
+        {{view Ember.Checkbox checkedBinding='adult'}}
+    </div>
+</div>
+
+<div class='row'>
+    <div class='small-1 columns'>
+        <label class='inline'>Gender</label>
+    </div>
+    <div class='small-11 columns'>
+        {{view Ember.Select contentBinding='genders' valueBinding='gender'}}
+    </div>
+</div>
+
+<div class='row'>
+    <div class='small-1 columns'>
+        <label class='inline'>Notes</label>
+    </div>
+
+    <div class='small-11 columns'>
+        {{view Ember.TextArea valueBinding='notes'}}
+    </div>
+</div>

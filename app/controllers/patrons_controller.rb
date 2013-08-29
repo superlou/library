@@ -34,6 +34,6 @@ class PatronsController < ApplicationController
 
   private
   def patron_params
-    params.require(:patron).permit(:name, :code, :name, :gender, :email)
+    params.require(:patron).permit(:name, :code, :name, :gender, :email, :adult, :notes)
   end
 end

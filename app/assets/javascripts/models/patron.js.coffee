@@ -7,6 +7,8 @@ Library.Patron = Ember.Model.extend
   name: attr()
   gender: attr()
   email: attr()
+  notes: attr()
+  adult: attr()
 
 Library.Patron.reopenClass
   findByCode: (code) ->

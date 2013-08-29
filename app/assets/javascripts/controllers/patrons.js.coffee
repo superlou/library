@@ -7,6 +7,10 @@ Library.PatronsNewController = Ember.ObjectController.extend
       (err)=> @set 'errors', err
     )
 
+  genders: (->
+      ['', 'male', 'female', 'other']
+  ).property()
+
 Library.PatronsPatronController = Ember.ObjectController.extend
   delete: ->
     @get('content').deleteRecord()
@@ -22,6 +26,10 @@ Library.PatronsPatronController = Ember.ObjectController.extend
         @set 'isEditing', false
       (err)=> @set 'errors', err
     )
+
+  genders: (->
+    ['', 'male', 'female', 'other']
+  ).property()
 
   resetErrors: (->
     @set 'errors', null
