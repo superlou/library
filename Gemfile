@@ -13,7 +13,7 @@ gem 'faye'
 gem 'sqlite3'
 
 gem 'ember-rails'
-gem 'ember-source', '1.0.0.rc7'
+gem 'ember-source', '1.0.0.rc8'
 
 gem 'chronic'
 
