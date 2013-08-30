@@ -5,11 +5,24 @@
         <button {{action 'cancelEdit'}}>Cancel</button>
     </form>
 {{else}}
-    <h1>{{full_title}}</h1>
-    <p>Code: {{code}}</p>
-    <p>Notes: {{notes}}</p>
-    <p>Adult only: {{adult}}</p>
-    <p>Stock: {{available}} of {{stock}} available</p>
-    <button {{action 'edit'}}>Edit</button>
-    <button {{action 'delete'}}>Delete</button>
+    <div class='row'>
+        <div class='small-8 columns'>
+            <h1>{{full_title}}</h1>
+        </div>
+        <div class='small-4 columns'>
+            <button {{action 'edit'}}>Edit</button>
+            <button {{action 'delete'}}>Delete</button>
+        </div>
+    </div>
+
+    <ul class='slug-line'>
+        {{codeSlug code}}
+        {{stockSlug available stock}}
+        {{adultSlug adult}}
+    </ul>
+
+    {{#if notes}}
+        <h2>Notes</h2>
+        <p>{{notes}}</p>
+    {{/if}}
 {{/if}}
