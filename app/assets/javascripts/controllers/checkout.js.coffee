@@ -2,17 +2,18 @@ Library.CheckoutController = Ember.ObjectController.extend
   book_code: ''
   patron_code: ''
 
-  save: ->
-    @set 'model.status', 'out'
+  actions:
+    save: ->
+      @set 'model.status', 'out'
 
-    @get('model').save().then(
-      (val)=>
-        @transitionToRoute('checkout')
-        @set 'book_code', ''
-        @set 'patron_code', ''
-        @set 'model', Library.Checkout.create()
-      (err)=> @set 'errors', err
-    )
+      @get('model').save().then(
+        (val)=>
+          @transitionToRoute('checkout')
+          @set 'book_code', ''
+          @set 'patron_code', ''
+          @set 'model', Library.Checkout.create()
+        (err)=> @set 'errors', err
+      )
 
   set_model_book: (->
     book = Library.Book.findByCode(@get('book_code'))

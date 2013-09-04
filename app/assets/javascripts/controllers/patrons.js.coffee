@@ -1,40 +1,42 @@
 Library.PatronsController = Ember.ArrayController.extend()
 
 Library.PatronsNewController = Ember.ObjectController.extend
-  save: ->
-    @get('model').save().then(
-      (val)=> @transitionToRoute('patrons.patron', @get('model'))
-      (err)=> @set 'errors', err
-    )
+  actions:
+    save: ->
+      @get('model').save().then(
+        (val)=> @transitionToRoute('patrons.patron', @get('model'))
+        (err)=> @set 'errors', err
+      )
 
   genders: (->
       ['', 'male', 'female', 'other']
   ).property()
 
 Library.PatronsPatronController = Ember.ObjectController.extend
-  delete: ->
-    @get('content').deleteRecord()
-    @transitionToRoute('patrons')
+  actions:
+    delete: ->
+      @get('content').deleteRecord()
+      @transitionToRoute('patrons')
 
-  edit: ->
-    @set 'isEditing', true
+    edit: ->
+      @set 'isEditing', true
 
-  saveEdit: ->
-    @get('content').save().then(
-      (val)=>
-        @transitionToRoute('patrons.patron', @get('content'))
-        @set 'isEditing', false
-      (err)=> @set 'errors', err
-    )
+    saveEdit: ->
+      @get('content').save().then(
+        (val)=>
+          @transitionToRoute('patrons.patron', @get('content'))
+          @set 'isEditing', false
+        (err)=> @set 'errors', err
+      )
+
+    cancelEdit: ->
+      @set 'isEditing', false
+      @get('content').reload()
 
   genders: (->
     ['', 'male', 'female', 'other']
   ).property()
 
   resetErrors: (->
-    @set 'errors', null
-  ).observes('isEditing')
-
-  cancelEdit: ->
-    @set 'isEditing', false
-    @get('content').reload()
+      @set 'errors', null
+    ).observes('isEditing')

@@ -10,7 +10,7 @@ Library.Checkout = Ember.Model.extend
   closed_at: attr(Date)
   created_at: attr(Date)
 
-  isValid: (->
+  isFullyLoaded: (->
     if @get('book.isLoaded') and @get('patron.isLoaded')
       return true
 
