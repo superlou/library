@@ -12,16 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
 //= require handlebars
 //= require ember
 //# require ember-data
 //= require_self
 //= require library
+//= require bootstrap
 
 // for more details see: http://emberjs.com/guides/application/
 Library = Ember.Application.create();
 
 //= require_tree .
-
-$(document).foundation();

@@ -1,16 +1,18 @@
 {{#if isEditing}}
-    <h1>Edit {{name}}</h1>
-    {{partial 'patrons/edit'}}
-    <button {{action 'saveEdit'}}>Save</button>
-    <button {{action 'cancelEdit'}}>Cancel</button>
+    <form role='form' class='form-horizontal'>
+        <h1>Edit {{name}}</h1>
+        {{partial 'patrons/edit'}}
+        <button class='btn btn-primary' {{action 'saveEdit'}}>Save</button>
+        <button class='btn btn-default' {{action 'cancelEdit'}}>Cancel</button>
+    </form>
 {{else}}
     <div class='row'>
-        <div class='small-8 columns'>
+        <div class='col-md-8'>
             <h1>{{name}}</h1>
         </div>
-        <div class='small-4 columns'>
-            <button {{action 'edit'}}>Edit</button>
-            <button {{action 'delete'}}>Delete</button>
+        <div class='col-md-4'>
+            <button class='btn btn-default' {{action 'edit'}}>Edit</button>
+            <button class='btn btn-default' {{action 'delete'}}>Delete</button>
         </div>
     </div>
 

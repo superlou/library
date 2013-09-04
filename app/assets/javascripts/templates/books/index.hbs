@@ -1,26 +1,25 @@
 <div class='row'>
-    <div class='small-6 columns'>
+    <div class='col-md-6'>
         <h1>Filter Books</h1>
     </div>
-    <div class='small-6 columns'>
-        {{#linkTo 'books.new' class='button right'}}New Book{{/linkTo}}
+    <div class='col-md-6'>
+        {{#linkTo 'books.new' class='btn btn-default pull-right'}}New Book{{/linkTo}}
     </div>
 </div>
 
-<div class='row'>
-    <div class='small-2 columns'>
-        <label for="filterName" class="right inline">Title</label>
+<form class='form-horizontal' role='form'>
+    <div class='form-group'>
+        <label for="filterName" class="col-md-2 control-label">Title</label>
+        <div class='col-md-10'>
+            {{view Ember.TextField valueBinding='filterName' placeholder='book title'
+              class='form-control'}}
+        </div>
     </div>
-    <div class='small-10 columns'>
-        {{view Ember.TextField valueBinding='filterName' placeholder='book title'}}
+    <div class='form-group'>
+        <label for="filterVolume" class="col-md-2 control-label">Volume</label>
+        <div class='col-md-10'>
+            {{view Ember.TextField valueBinding='filterVolume' placeholder='book volume'
+            class='form-control'}}
+        </div>
     </div>
-</div>
-
-<div class='row'>
-    <div class='small-2 columns'>
-        <label for="filterName" class="right inline">Volume</label>
-    </div>
-    <div class='small-10 columns'>
-        {{view Ember.TextField valueBinding='filterVolume' placeholder='book volume'}}
-    </div>
-</div>
+</form>

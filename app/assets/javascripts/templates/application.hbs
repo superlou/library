@@ -1,20 +1,22 @@
-<nav class='top-bar'>
-    <ul class='title-area'>
-        <li class='name'><h1>{{#linkTo 'index'}}Manga Library{{/linkTo}}</h1></li>
-    </ul>
+<div class='navbar navbar-default'>
+    <div class='container'>
+        <div class='navbar-header'>
+            {{#linkTo 'index' class='navbar-brand'}}Manga Library{{/linkTo}}
+        </div>
 
-    <section class='top-bar-section'>
-        <ul class='left'>
-            <li>{{#linkTo 'checkout'}}Checkout{{/linkTo}}</li>
-            <li>{{#linkTo 'checkin'}}Checkin{{/linkTo}}</li>
-            <li class='divider'></li>
-            <li>{{#linkTo 'books'}}Books{{/linkTo}}</li>
-            <li>{{#linkTo 'patrons'}}Patrons{{/linkTo}}</li>
-            <li>{{#linkTo 'checkouts'}}Transactions{{/linkTo}}</li>
-        </ul>
-    </section>
-</nav>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav'>
+                <li>{{#linkTo 'checkout'}}Checkout{{/linkTo}}</li>
+                <li>{{#linkTo 'checkin'}}Checkin{{/linkTo}}</li>
+                <li class='divider'></li>
+                <li>{{#linkTo 'books'}}Books{{/linkTo}}</li>
+                <li>{{#linkTo 'patrons'}}Patrons{{/linkTo}}</li>
+                <li>{{#linkTo 'checkouts'}}Transactions{{/linkTo}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<div class='row'>
+<div class='container'>
     {{outlet}}
 </div>

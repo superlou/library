@@ -1,26 +1,26 @@
-<fieldset>
-    <legend>Edit Checkout</legend>
+{{errors.responseText}}
 
-    <div class='row'>
-        {{errors.responseText}}
-    </div>
-
-    <div class='row'>
-        <div class='small-6 columns'>
-            <label>Book Code</label>
-            {{view Ember.TextField valueBinding='book_code'}}
+<div class='row'>
+    <div class='col-md-6'>
+        <div class='form-group'>
+            <label>Book</label>
+            {{view Ember.TextField valueBinding='book_code'
+            placeholder='book code' class='form-control'}}
             {{model.book.full_title}}
             {{#if model.book.adult}}
                 <p><span class='alert label'>
-                    For adults only
-                </span></p>
+                        For adults only
+                    </span></p>
             {{/if}}
         </div>
+    </div>
 
-        <div class='small-6 columns'>
-            <label>Patron Code</label>
-            {{view Ember.TextField valueBinding='patron_code'}}
+    <div class='col-md-6'>
+        <div class='form-group'>
+            <label>Patron</label>
+            {{view Ember.TextField valueBinding='patron_code'
+            placeholder='patron code' class='form-control'}}
             {{model.patron.name}}
         </div>
     </div>
-</fieldset>
+</div>

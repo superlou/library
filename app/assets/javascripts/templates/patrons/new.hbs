@@ -1,5 +1,5 @@
 <h1>Create New Patron</h1>
-<form {{action 'save' on='submit'}}>
+<form role='form' class='form-horizontal' {{action 'save' on='submit'}}>
     {{partial 'patrons/edit'}}
-    <button {{action save}}>Save</button>
+    <button class='btn btn-primary' {{action save}}>Save</button>
 </form>

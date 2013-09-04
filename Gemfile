@@ -24,13 +24,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
+
+  gem 'less-rails'
 
   gem 'uglifier', '>= 1.0.3'
-
-  gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.0.0'
-  gem 'foundation-icons-sass-rails'
 end
 
 gem 'jquery-rails', '2.2.2'

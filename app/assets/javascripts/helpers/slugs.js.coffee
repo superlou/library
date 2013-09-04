@@ -1,21 +1,21 @@
 Em.Handlebars.registerBoundHelper 'emailSlug', (value) ->
   if value
-    html = "<li><i class='fi-mail'></i> " + value + "</li>"
+    html = "<li><span class='glyphicon glyphicon-envelope'></span> " + value + "</li>"
   else
-    html = "<li><i class='fi-mail'></i> no email provided</li>"
+    html = "<li><span class='glyphicon glyphicon-envelope'></span> no email provided</li>"
 
   html.htmlSafe()
 
 Em.Handlebars.registerBoundHelper 'codeSlug', (value) ->
   if value
-    html = "<li><i class='fi-marker'></i> " + value + "</li>"
+    html = "<li><span class='glyphicon glyphicon-barcode'></span> " + value + "</li>"
   else
-    html = "<li><i class='fi-marker'></i> no code set</li>"
+    html = "<li><span class='glyphicon glyphicon-barcode'></span> no code set</li>"
 
   html.htmlSafe()
 
 Em.Handlebars.registerBoundHelper 'identitySlug', (gender, adult) ->
-  html = "<li><i class='fi-torso'></i> "
+  html = "<li><span class='glyphicon glyphicon-user'></span> "
   if gender
     html += gender
 
@@ -29,7 +29,7 @@ Em.Handlebars.registerBoundHelper 'identitySlug', (gender, adult) ->
   html.htmlSafe()
 
 Em.Handlebars.registerBoundHelper 'stockSlug', (available, stock)->
-  html = "<li><i class='fi-shopping-cart'></i> "
+  html = "<li><span class='glyphicon glyphicon-shopping-cart'></span> "
 
   html += available + " of " + stock + " available"
 
@@ -37,7 +37,7 @@ Em.Handlebars.registerBoundHelper 'stockSlug', (available, stock)->
   html.htmlSafe()
 
 Em.Handlebars.registerBoundHelper 'adultSlug', (adult)->
-  html = "<li><i class='fi-torsos-all'></i> "
+  html = "<li><span class='glyphicon glyphicon-user'></span> "
 
   if adult
     html += "adults only"

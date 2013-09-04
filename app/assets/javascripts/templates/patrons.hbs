@@ -1,4 +1,4 @@
-<div class='small-3 columns'>
+<div class='col-md-3'>
     <ul>
         {{#each controller}}
             <li>{{#linkTo 'patrons.patron' this}}{{name}}{{/linkTo}}</li>
@@ -6,6 +6,6 @@
     </ul>
 </div>
 
-<div class='small-9 columns'>
+<div class='col-md-9'>
     {{outlet}}
 </div>

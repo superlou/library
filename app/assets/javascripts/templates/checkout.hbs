@@ -5,24 +5,28 @@
 </div>
 
 <div class='row'>
-    <div class='small-6 columns'>
-        <label>Book</label>
-        {{view Ember.TextField valueBinding='book_code'
-          placeholder='book code'}}
-        {{model.book.full_title}}
-        {{#if model.book.adult}}
-            <p><span class='alert label'>
-                    For adults only
-                </span></p>
-        {{/if}}
+    <div class='col-md-6'>
+        <div class='form-group'>
+            <label>Book</label>
+            {{view Ember.TextField valueBinding='book_code'
+              placeholder='book code' class='form-control'}}
+            {{model.book.full_title}}
+            {{#if model.book.adult}}
+                <p><span class='alert label'>
+                        For adults only
+                    </span></p>
+            {{/if}}
+        </div>
     </div>
 
-    <div class='small-6 columns'>
-        <label>Patron</label>
-        {{view Ember.TextField valueBinding='patron_code'
-          placeholder='patron code'}}
-        {{model.patron.name}}
+    <div class='col-md-6'>
+        <div class='form-group'>
+            <label>Patron</label>
+            {{view Ember.TextField valueBinding='patron_code'
+              placeholder='patron code' class='form-control'}}
+            {{model.patron.name}}
+        </div>
     </div>
 </div>
 
-<button {{action save}} {{bindAttr disabled="saveDisabled"}}>Save</button>
+<button class='btn btn-default' {{action save}} {{bindAttr disabled="saveDisabled"}}>Save</button>
