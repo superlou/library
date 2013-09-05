@@ -37,30 +37,27 @@ Library.BooksSearchController = Ember.Controller.extend
     @transitionToRoute('books', {test: 'here'})
 
 Library.BooksBookController = Ember.ObjectController.extend
-
   actions:
     delete: ->
       @get('content').deleteRecord()
       @transitionToRoute('books')
 
-    edit: ->
-      @set 'isEditing', true
+  resetErrors: (->
+    @set 'errors', null
+  ).observes('isEditing')
 
+Library.BooksEditController = Ember.ObjectController.extend
+  actions:
     saveEdit: ->
       @get('content').save().then(
         (val)=>
           @transitionToRoute('books.book', @get('content'))
-          @set 'isEditing', false
         (err)=> @set 'errors', err
       )
 
     cancelEdit: ->
-      @set 'isEditing', false
       @get('content').reload()
-
-  resetErrors: (->
-    @set 'errors', null
-  ).observes('isEditing')
+      @transitionToRoute('books.book', @get('content'))
 
 Library.BooksNewController = Ember.ObjectController.extend
   actions:

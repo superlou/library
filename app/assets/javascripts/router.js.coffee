@@ -9,10 +9,12 @@ Library.Router.map ()->
   @resource 'books', ->
     @route 'new'
     @resource 'books.book', {path: ':book_id'}
+    @route 'edit', {path: ':book_id/edit'}
 
   @resource 'patrons', ->
-    @resource 'patrons.patron', {path: ':patron_id'}
     @route 'new'
+    @resource 'patrons.patron', {path: ':patron_id'}
+    @route 'edit', {path: ':patron_id/edit'}
 
   @resource 'checkouts', ->
     @resource 'checkouts.checkout', {path: ':checkout_id'}

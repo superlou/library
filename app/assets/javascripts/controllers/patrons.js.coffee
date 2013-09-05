@@ -18,6 +18,12 @@ Library.PatronsPatronController = Ember.ObjectController.extend
       @get('content').deleteRecord()
       @transitionToRoute('patrons')
 
+  resetErrors: (->
+      @set 'errors', null
+    ).observes('isEditing')
+
+Library.PatronsEditController = Ember.ObjectController.extend
+  actions:
     edit: ->
       @set 'isEditing', true
 
@@ -25,18 +31,13 @@ Library.PatronsPatronController = Ember.ObjectController.extend
       @get('content').save().then(
         (val)=>
           @transitionToRoute('patrons.patron', @get('content'))
-          @set 'isEditing', false
         (err)=> @set 'errors', err
       )
 
     cancelEdit: ->
-      @set 'isEditing', false
       @get('content').reload()
+      @transitionToRoute('patrons.patron', @get('content'))
 
   genders: (->
     ['', 'male', 'female', 'other']
   ).property()
-
-  resetErrors: (->
-      @set 'errors', null
-    ).observes('isEditing')
