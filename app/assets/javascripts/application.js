@@ -17,7 +17,8 @@
 //# require ember-data
 //= require_self
 //= require library
-//= require bootstrap
+//= require vendor/bootstrap
+//= require vendor/ember-bootstrap
 
 // for more details see: http://emberjs.com/guides/application/
 Library = Ember.Application.create();
