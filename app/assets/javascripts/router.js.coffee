@@ -10,6 +10,7 @@ Library.Router.map ()->
     @route 'new'
     @resource 'books.book', {path: ':book_id'}
     @route 'edit', {path: ':book_id/edit'}
+    @route 'clone_volume', {path: ':book_id/clone_volume'}
 
   @resource 'patrons', ->
     @route 'new'
@@ -39,6 +40,13 @@ Library.BooksRoute = Ember.Route.extend
 Library.BooksNewRoute = Ember.Route.extend
   model: (params)->
     Library.Book.create()
+
+Library.BooksCloneVolumeRoute = Ember.Route.extend
+  setupController: (controller, model)->
+    basis_model = model
+    Library.Book.cloneVolumeFrom(model.get('id')).then (model)->
+      controller.set('model', model)
+      controller.set('basis_model', basis_model)
 
 Library.PatronsRoute = Ember.Route.extend
   setupController: (controller)->

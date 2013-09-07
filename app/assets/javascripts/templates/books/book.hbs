@@ -1,10 +1,23 @@
 <div class='row'>
-    <div class='col-md-8'>
+    <div class='col-md-10'>
         <h1>{{full_title}}</h1>
     </div>
-    <div class='col-md-4'>
-        {{#linkTo 'books.edit' this class='btn btn-default'}}Edit{{/linkTo}}
-        <button class='btn btn-default' {{action 'delete'}}>Delete</button>
+    <div class='col-md-2'>
+        <div class='btn-group'>
+            {{#linkTo 'books.edit' this class='btn btn-default'}}
+                <span class='glyphicon glyphicon-pencil'></span> Edit
+            {{/linkTo}}
+            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
+                <span class='caret'></span>
+            </button>
+            <ul class='dropdown-menu' role='menu'>
+                <li>{{#linkTo 'books.clone_volume' this}}
+                    <span class='glyphicon glyphicon-share-alt'></span> Clone Volume
+                {{/linkTo}}</li>
+                <li><a {{action 'delete'}}><span class='glyphicon glyphicon-remove'></span> Delete</button></a></li>
+            </ul>
+        </div>
+
     </div>
 </div>
 

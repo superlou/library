@@ -59,6 +59,18 @@ Library.BooksEditController = Ember.ObjectController.extend
       @get('content').reload()
       @transitionToRoute('books.book', @get('content'))
 
+Library.BooksCloneVolumeController = Ember.ObjectController.extend
+  actions:
+    saveEdit: ->
+      @get('content').save().then(
+        (val)=>
+          @transitionToRoute('books.book', @get('content'))
+        (err)=> @set 'errors', err
+      )
+
+    cancelEdit: ->
+      @transitionToRoute('books.book', @get('basis_model'))
+
 Library.BooksNewController = Ember.ObjectController.extend
   actions:
     save: ->
