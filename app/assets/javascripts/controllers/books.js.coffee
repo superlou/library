@@ -1,35 +1,18 @@
 Library.BooksController = Ember.ArrayController.extend
-
-  needs: 'booksIndex'
-  filterNameBinding: 'controllers.booksIndex.filterName'
-  filterVolumeBinding: 'controllers.booksIndex.filterVolume'
+  filterQuery: ''
 
   filteredModel: (->
     result = @get('model').filter (item, index, enumerable)=>
-      title = item.get('title').toLowerCase()
+      full_title = item.get('full_title').toLowerCase()
 
-      if title.indexOf(@get('filterName').toLowerCase()) < 0
+
+      if full_title.indexOf(@get('filterQuery').toLowerCase()) < 0
         return false
 
-
-      filterVolume = @get('filterVolume').toLowerCase()
-
-      if filterVolume
-        if item.get('volume')
-          volume = item.get('volume').toString().toLowerCase()
-        else
-          return false
-
-        if volume.indexOf(filterVolume) < 0
-          return false
-
-
       true
-  ).property('model.isLoaded', 'filterName', 'filterVolume')
+  ).property('model.isLoaded', 'filterQuery')
 
-Library.BooksIndexController = Ember.Controller.extend
-  filterName: ''
-  filterVolume: ''
+Library.BooksIndexController = Ember.Controller.extend()
 
 Library.BooksSearchController = Ember.Controller.extend
   search: ->

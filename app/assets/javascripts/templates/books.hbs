@@ -1,4 +1,5 @@
 <div class='col-md-4'>
+    {{view Bootstrap.Forms.TextField valueBinding="filterQuery" label='' placeholder='Filter'}}
     <ul>
         {{#collection Ember.ListView contentBinding='filteredModel' height=500 rowHeight=40}}
             <li>{{#linkTo 'books.book' this}}{{full_title}}{{/linkTo}}</li>
