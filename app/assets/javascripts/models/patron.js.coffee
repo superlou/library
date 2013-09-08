@@ -9,6 +9,9 @@ Library.Patron = Ember.Model.extend
   email: attr()
   notes: attr()
   adult: attr()
+  keepCheckoutHistory: attr()
+
+Library.Patron.camelizeKeys = true
 
 Library.Patron.reopenClass
   findByCode: (code) ->

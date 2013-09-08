@@ -63,7 +63,9 @@ Library.PatronsRoute = Ember.Route.extend
 
 Library.PatronsNewRoute = Ember.Route.extend
   model: (params)->
-    Library.Patron.create()
+    Library.Patron.create
+      keepCheckoutHistory: true
+
 
 Library.CheckoutsRoute = Ember.Route.extend
   model: (params)->

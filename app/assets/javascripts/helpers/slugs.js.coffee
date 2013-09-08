@@ -46,3 +46,14 @@ Em.Handlebars.registerBoundHelper 'adultSlug', (adult)->
 
   html += "</li>"
   html.htmlSafe()
+
+Em.Handlebars.registerBoundHelper 'keepCheckoutHistorySlug', (keepCheckoutHistory)->
+  html = "<li><span class='glyphicon glyphicon-list-alt'></span> "
+
+  if keepCheckoutHistory
+    html += "Keep checkout history"
+  else
+    html += "Do not keep checkouts"
+
+  html += "</li>"
+  html.htmlSafe()

@@ -36,6 +36,13 @@
 </div>
 
 <div class='form-group'>
+    <label for='keep_checkout_history' class='col-md-2 control-label'>Keep Checkout History</label>
+    <div class='col-md-1'>
+        {{view Ember.Checkbox checkedBinding='keepCheckoutHistory' class='form-control'}}
+    </div>
+</div>
+
+<div class='form-group'>
     <label for='notes' class='col-md-2 control-label'>Notes</label>
     <div class='col-md-10'>
         {{view Ember.TextArea valueBinding='notes' cols="80" rows="4" class='form-control'}}

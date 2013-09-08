@@ -34,6 +34,7 @@ class PatronsController < ApplicationController
 
   private
   def patron_params
-    params.require(:patron).permit(:name, :code, :name, :gender, :email, :adult, :notes)
+    params.require(:patron).permit(:name, :code, :name, :gender, :email,
+                                   :adult, :notes, :keep_checkout_history)
   end
 end

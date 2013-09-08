@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827231353) do
+ActiveRecord::Schema.define(:version => 20130908163207) do
 
   create_table "books", :force => true do |t|
     t.string   "code"
@@ -45,10 +45,11 @@ ActiveRecord::Schema.define(:version => 20130827231353) do
     t.string   "code"
     t.string   "gender"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.text     "notes"
     t.boolean  "adult"
+    t.boolean  "keep_checkout_history"
   end
 
 end
