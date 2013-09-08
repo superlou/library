@@ -1,21 +1,24 @@
-<div class='navbar navbar-default'>
-    <div class='container'>
-        <div class='navbar-header'>
-            {{#linkTo 'index' class='navbar-brand'}}Manga Library{{/linkTo}}
-        </div>
-
-        <div class='navbar-collapse collapse'>
-            <ul class='nav navbar-nav'>
-                <li>{{#linkTo 'checkout'}}Checkout{{/linkTo}}</li>
-                <li>{{#linkTo 'checkin'}}Checkin{{/linkTo}}</li>
-                <li class='divider'></li>
-                <li>{{#linkTo 'books'}}Books{{/linkTo}}</li>
-                <li>{{#linkTo 'patrons'}}Patrons{{/linkTo}}</li>
-                <li>{{#linkTo 'checkouts'}}Transactions{{/linkTo}}</li>
-            </ul>
-        </div>
+<nav class='navbar navbar-default' role='navigation'>
+    <div class='navbar-header'>
+        {{#linkTo 'index' class='navbar-brand'}}Manga Library{{/linkTo}}
     </div>
-</div>
+
+    <div class='navbar-collapse collapse'>
+        <ul class='nav navbar-nav'>
+            {{#linkTo 'checkout' tagName='li' href='false'}}{{#linkTo 'checkout'}}Checkout{{/linkTo}}{{/linkTo}}
+            {{#linkTo 'checkin' tagName='li' href='false'}}{{#linkTo 'checkin'}}Checkin{{/linkTo}}{{/linkTo}}
+            {{#linkTo 'books' tagName='li' href='false'}}{{#linkTo 'books'}}Books{{/linkTo}}{{/linkTo}}
+            {{#linkTo 'patrons' tagName='li' href='false'}}{{#linkTo 'patrons'}}Patrons{{/linkTo}}{{/linkTo}}
+            {{#linkTo 'checkouts' tagName='li' href='false'}}{{#linkTo 'checkouts'}}Transactions{{/linkTo}}{{/linkTo}}
+        </ul>
+
+        <ul class='nav navbar-nav navbar-right'>
+            {{#linkTo 'settings' tagName='li' href='false'}}{{#linkTo 'settings'}}
+                <span class='glyphicon glyphicon-cog'></span>
+            {{/linkTo}}{{/linkTo}}
+        </ul>
+    </div>
+</nav>
 
 <div class='container'>
     {{outlet}}
