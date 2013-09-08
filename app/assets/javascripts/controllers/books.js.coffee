@@ -31,27 +31,27 @@ Library.BooksBookController = Ember.ObjectController.extend
 
 Library.BooksEditController = Ember.ObjectController.extend
   actions:
-    saveEdit: ->
+    save: ->
       @get('content').save().then(
         (val)=>
           @transitionToRoute('books.book', @get('content'))
         (err)=> @set 'errors', err
       )
 
-    cancelEdit: ->
+    cancel: ->
       @get('content').reload()
       @transitionToRoute('books.book', @get('content'))
 
 Library.BooksCloneVolumeController = Ember.ObjectController.extend
   actions:
-    saveEdit: ->
+    save: ->
       @get('content').save().then(
         (val)=>
           @transitionToRoute('books.book', @get('content'))
         (err)=> @set 'errors', err
       )
 
-    cancelEdit: ->
+    cancel: ->
       @transitionToRoute('books.book', @get('basis_model'))
 
 Library.BooksNewController = Ember.ObjectController.extend
@@ -61,3 +61,6 @@ Library.BooksNewController = Ember.ObjectController.extend
         (val)=> @transitionToRoute('books.book', @get('model'))
         (err)=> @set 'errors', err
       )
+
+    cancel: ->
+      @transitionToRoute('books')
