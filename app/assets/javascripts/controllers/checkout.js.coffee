@@ -26,5 +26,5 @@ Library.CheckoutController = Ember.ObjectController.extend
   ).observes('patron_code')
 
   saveDisabled: (->
-    return not @get('model.isValid')
-  ).property('model.isValid')
+    return not @get('model.isFullyLoaded')
+  ).property('model.isFullyLoaded')
