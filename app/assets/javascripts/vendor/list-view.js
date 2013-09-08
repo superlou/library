@@ -1,3 +1,6 @@
+// Last commit: a69f204 (2013-09-02 15:48:05 +0000)
+
+
 (function() {
 var get = Ember.get, set = Ember.set;
 
@@ -197,7 +200,7 @@ Ember.ListViewHelper = {
 
         element.style.webkitTransform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
       };
-    }else{
+    } else {
       return function(element, position){
         var x = position.x,
             y = position.y;
@@ -316,12 +319,14 @@ Ember.ListViewMixin = Ember.Mixin.create({
   */
   init: function() {
     this._super();
-    enableProfilingOutput();
-    addContentArrayObserver.call(this);
-    this._syncChildViews();
-    this.columnCountDidChange();
     this.on('didInsertElement', syncListContainerWidth);
+    this.columnCountDidChange();
+    this._addContentArrayObserver();
   },
+
+  _addContentArrayObserver: Ember.beforeObserver(function() {
+    addContentArrayObserver.call(this);
+  }, 'content'),
 
   /**
     Called on your view when it should push strings of HTML into a
@@ -600,7 +605,7 @@ Ember.ListViewMixin = Ember.Mixin.create({
   maxScrollTop: Ember.computed('height', 'totalHeight', function(){
     var totalHeight, viewportHeight;
 
-    totalHeight = get(this, 'totalHeight'),
+    totalHeight = get(this, 'totalHeight');
     viewportHeight = get(this, 'height');
 
     return max(0, totalHeight - viewportHeight);
@@ -666,7 +671,7 @@ Ember.ListViewMixin = Ember.Mixin.create({
     }
   }, 'content'),
 
-  /**
+  /**),
     @private
     @event contentDidChange
   */
@@ -706,7 +711,7 @@ Ember.ListViewMixin = Ember.Mixin.create({
 
     @method _syncChildViews
    **/
-  _syncChildViews: function(){
+  _syncChildViews: Ember.on('init', function(){
     var itemViewClass, startingIndex, childViewCount,
         endingIndex, numberOfChildViews, numberOfChildViewsNeeded,
         childViews, count, delta, index, childViewsLength, contentIndex;
@@ -754,7 +759,7 @@ Ember.ListViewMixin = Ember.Mixin.create({
 
     this._lastStartingIndex = startingIndex;
     this._lastEndingIndex   = this._lastEndingIndex + delta;
-  },
+  }),
 
   /**
     @private
