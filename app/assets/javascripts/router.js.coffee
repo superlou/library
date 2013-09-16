@@ -24,6 +24,11 @@ Library.Router.map ()->
   @route 'checkout'
   @route 'checkin'
 
+  @resource 'settings', ->
+    @route 'general'
+    @route 'events'
+
+
 Library.BooksRoute = Ember.Route.extend
   setupController: (controller)->
     controller.set 'model', Library.Book.findAll()
@@ -89,3 +94,7 @@ Library.CheckinRoute = Ember.Route.extend
 
     client.subscribe '/checkouts/update', (data)->
       controller.set 'model', Library.Checkout.find({status: 'out'})
+
+Library.SettingsEventsRoute = Ember.Route.extend
+  model: (params)->
+    Library.Event.findAll()

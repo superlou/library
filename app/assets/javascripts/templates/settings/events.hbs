@@ -1,0 +1,13 @@
+<h1>Events</h1>
+<p>Each checkout can be associated with a single event.  This is necessary to provide
+analytics.  Any checkouts created during an event will be assigned to the event by
+default. <strong>Be very careful</strong> before deleting an event!  It will remove
+the history from the transactions for the deleted event.</p>
+
+<p>
+    <button class='btn btn-default' {{action new}}>New</button>
+</p>
+
+{{#each controller}}
+    {{render "event" this}}
+{{/each}}

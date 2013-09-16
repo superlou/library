@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908163207) do
+ActiveRecord::Schema.define(:version => 20130908211711) do
 
   create_table "books", :force => true do |t|
     t.string   "code"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(:version => 20130908163207) do
     t.integer  "patron_id"
     t.string   "status"
     t.datetime "closed_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.text     "location"
+    t.datetime "start"
+    t.datetime "finish"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

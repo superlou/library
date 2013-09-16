@@ -3,6 +3,7 @@ Library::Application.routes.draw do
   resources :books
   resources :patrons
   resources :checkouts
+  resources :events
 
   root :to => 'pages#index'
 

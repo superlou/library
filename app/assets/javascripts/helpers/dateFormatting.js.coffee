@@ -10,6 +10,12 @@ Em.Handlebars.registerBoundHelper 'shortDateTime', (value) ->
   else
     'unknown'
 
+Em.Handlebars.registerBoundHelper 'shortDate', (value) ->
+  if value
+    moment(value).format('MM/DD/YYYY')
+  else
+    'unknown'
+
 Em.Handlebars.registerBoundHelper 'humanizeDuration', (value) ->
   if value
     value.humanize()
