@@ -1,7 +1,7 @@
 <div class='col-md-4'>
     {{view Bootstrap.Forms.TextField valueBinding="filterQuery" label='' placeholder='Filter'}}
 
-    {{#collection Ember.ListView contentBinding='filteredModel' height=500 rowHeight=40}}
+    {{#collection Library.SizingListView contentBinding='filteredModel' height=300 rowHeight=40}}
         {{#linkTo 'books.book' this}}{{full_title}}{{/linkTo}}
     {{/collection}}
 </div>
