@@ -3,6 +3,7 @@
 
     {{#collection Library.SizingListView contentBinding='filteredModel' height=300 rowHeight=40}}
         {{#linkTo 'books.book' this}}{{full_title}}{{/linkTo}}
+        <div class='author'>{{author}}</div>
     {{/collection}}
 </div>
 

@@ -1,33 +1,38 @@
 <div class='row'>
-    <div class='col-md-10'>
+    <div class='col-md-12'>
         <h1>{{full_title}}</h1>
+        <h2>{{subtitle}}</h2>
+        <p>By {{author}}</p>
     </div>
-    <div class='col-md-2'>
-        <div class='btn-group'>
-            {{#linkTo 'books.edit' this class='btn btn-default'}}
-                <span class='glyphicon glyphicon-pencil'></span> Edit
-            {{/linkTo}}
-            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>
-                <span class='caret'></span>
-            </button>
+</div>
+
+<div class='row'>
+    <div class='col-md-12 toolbar'>
+        {{#linkTo 'books.edit' this class='action'}}Edit{{/linkTo}}
+
+        <span class='dropdown'>
+            <a data-toggle='dropdown' class='action'>Tools</a>
             <ul class='dropdown-menu' role='menu'>
                 <li>{{#linkTo 'books.clone_volume' this}}
                     <span class='glyphicon glyphicon-share-alt'></span> Clone Volume
                 {{/linkTo}}</li>
                 <li><a {{action 'delete'}}><span class='glyphicon glyphicon-remove'></span> Delete</button></a></li>
             </ul>
-        </div>
+        </span>
 
+        {{#linkTo 'checkout' class='action'}}Checkout{{/linkTo}}
+
+        <span class='slugs'>
+            <span class='slug'>{{codeSlug code}}</span>
+            <span class='slug'>{{stockSlug available stock}}</span>
+            <span class='slug'>{{adultSlug adult}}</span>
+        </span>
     </div>
 </div>
 
-<ul class='slug-line'>
-    {{codeSlug code}}
-    {{stockSlug available stock}}
-    {{adultSlug adult}}
-</ul>
-
-{{#if notes}}
-    <h2>Notes</h2>
-    <p>{{notes}}</p>
-{{/if}}
+<div class='row'>
+    <div class='col-md-12'>
+        <h2>Notes</h2>
+        <p>{{valueOrDefault notes '(no notes entered)'}}</p>
+    </div>
+</div>

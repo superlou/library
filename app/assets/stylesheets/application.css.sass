@@ -22,12 +22,18 @@ a
 .ember-list-item-view
   position: absolute
 
-ul.slug-line
+ul.details
   padding-left: 0px
+  list-style: none
 
   li
-    display: inline
-    padding-right: 8px
+    padding: 0.8em
+    border-bottom: 1px solid #ddd
+
+
+.author
+  color: darkgray
+  font-size: 0.8em
 
 .navbar
   .navbar-header
@@ -36,6 +42,35 @@ ul.slug-line
   .active
     border-bottom: #eee !important
 
+.toolbar
+  border-top: 1px solid #ddd
+  border-bottom: 1px solid #ddd
+  margin: 1em 0px
+
+  .action
+    display: inline-block
+    padding: 12px 12px
+    color: #777
+    text-align: center
+    white-space: nowrap
+    vertical-align: middle
+
+  .dropdown-menu
+    top: 30px
+    border-radius: 0px
+    border-top: transparent
+
+  .action:hover
+    color: #333
+    background: #ddd
+    text-decoration: none
+
+  .slugs
+    float: right
+    padding: 12px 12px
+
+    .slug
+      padding: 0px 6px
 
 h1
   font-family: "Raleway", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important

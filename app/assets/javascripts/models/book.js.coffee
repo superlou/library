@@ -7,8 +7,10 @@ Library.Book = Ember.Model.extend
   volume: attr()
   stock: attr(Number)
   title: attr()
+  subtitle: attr()
   adult: attr()
   notes: attr()
+  author: attr()
   created_at: attr(Date)
 
   checkouts: hasMany('Library.Checkout',{key: 'checkout_ids'})
