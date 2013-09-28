@@ -2,14 +2,10 @@ Library.BooksController = Ember.ArrayController.extend
   filterQuery: ''
 
   filteredModel: (->
-    result = @get('model').filter (item, index, enumerable)=>
-      full_title = item.get('full_title').toLowerCase()
+    @get('model').filter (item, index, enumerable)=>
+      return false unless item.get('isLoaded')
+      item.match_filter(@get('filterQuery'))
 
-
-      if full_title.indexOf(@get('filterQuery').toLowerCase()) < 0
-        return false
-
-      true
   ).property('model.isLoaded', 'filterQuery')
 
 Library.BooksIndexController = Ember.Controller.extend

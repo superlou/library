@@ -30,6 +30,15 @@ Library.Book = Ember.Model.extend
 
   ).property('title', 'volume')
 
+  match_filter: (filter)->
+    filter = filter.toLowerCase()
+    full_title = @get('full_title').toLowerCase()
+
+    if full_title.indexOf(filter) < 0
+      return false
+
+    true
+
 Library.Book.reopenClass
   findByCode: (code) ->
     @find('code:' + code)
