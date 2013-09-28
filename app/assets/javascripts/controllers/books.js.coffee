@@ -12,7 +12,24 @@ Library.BooksController = Ember.ArrayController.extend
       true
   ).property('model.isLoaded', 'filterQuery')
 
-Library.BooksIndexController = Ember.Controller.extend()
+Library.BooksIndexController = Ember.Controller.extend
+  needs: 'books'
+  books: Ember.computed.alias("controllers.books")
+
+  creationHistory: (->
+
+    counts = {}
+    @get('books').forEach (book)->
+      counts[book.get('created_at')] = 1 + (counts[book.get('created_at')] || 0)
+
+    countArray = []
+
+    for k, v of counts
+      item = [k, v]
+      countArray.push(item)
+
+    countArray
+  ).property('books', 'books.@each.isDone')
 
 Library.BooksSearchController = Ember.Controller.extend
   search: ->

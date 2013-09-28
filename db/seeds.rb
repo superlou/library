@@ -16,6 +16,10 @@ books_file_path = File.join Rails.root, 'db', 'seed', 'manga_library_notes.csv'
 books_file = File.open(books_file_path, "r:ISO-8859-1")
 books = CSV.parse(books_file, headers: true)
 
+limit = ENV['limit']
+limit = limit.to_i if limit
+count = 0
+
 books.each do |book|
   title = book['Title']
   code = book['Number']
@@ -51,4 +55,9 @@ books.each do |book|
     author: author,
     language: language
     )
+
+  count = count + 1
+  if limit
+    abort('Reached import limit') if count >= limit
+  end
 end
