@@ -21,7 +21,7 @@ Library.Router.map ()->
     @resource 'checkouts.checkout', {path: ':checkout_id'}
     @route 'new'
 
-  @route 'checkout'
+  @route 'checkout', {queryParams: ['bookCode']}
   @route 'checkin'
 
   @resource 'settings', ->
@@ -83,10 +83,10 @@ Library.CheckoutsNewRoute = Ember.Route.extend
     controller.set('model', Library.Checkout.create())
 
 Library.CheckoutRoute = Ember.Route.extend
-  setupController: (controller)->
-    controller.set('book_code', '')
-    controller.set('patron_code', '')
+  setupController: (controller, context, queryParams)->
     controller.set('model', Library.Checkout.create())
+    controller.set('book_code', queryParams.bookCode)
+    controller.set('patron_code', '')
 
 Library.CheckinRoute = Ember.Route.extend
   setupController: (controller)->
