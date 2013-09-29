@@ -11,6 +11,15 @@ Library.Patron = Ember.Model.extend
   adult: attr()
   keepCheckoutHistory: attr()
 
+  match_filter: (filter)->
+    filter = filter.toLowerCase()
+    name = @get('name').toLowerCase()
+
+    if name.indexOf(filter) < 0
+      return false
+
+    true
+
 Library.Patron.camelizeKeys = true
 
 Library.Patron.reopenClass

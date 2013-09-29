@@ -1,4 +1,12 @@
-Library.PatronsController = Ember.ArrayController.extend()
+Library.PatronsController = Ember.ArrayController.extend
+  filterQuery: ''
+
+  filteredModel: (->
+    @get('model').filter (item, index, enumerable)=>
+      return false unless item.get('isLoaded')
+      item.match_filter(@get('filterQuery'))
+
+  ).property('model.isLoaded', 'filterQuery')
 
 Library.PatronsNewController = Ember.ObjectController.extend
   actions:
