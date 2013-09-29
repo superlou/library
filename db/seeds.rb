@@ -60,6 +60,7 @@ books.each do |book|
 end
 
 # Create Patrons
+puts ""
 puts "Creating Patrons"
 
 (1..100).each do |code|
@@ -72,4 +73,17 @@ puts "Creating Patrons"
   patron.save!
 
   puts "[#{patron.code}] #{patron.name}"
+end
+
+# Create checkouts
+puts ""
+puts "Create Checkouts"
+
+(1..20).each do |checkout|
+  book = Book.all.sample
+  patron = Patron.all.sample
+
+  checkout = Checkout.create(book: book, patron: patron, status: "out")
+
+  puts "#{checkout.patron.name} checks out #{checkout.book.title}"
 end
