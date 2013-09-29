@@ -36,7 +36,6 @@ books.each do |book|
   notes = book['Notes']
   created_at = Chronic.parse(book['Date Aq'])
 
-  puts '-----------'
   puts "[#{code}] #{title}, #{volume}"
 
   Book.create(
@@ -57,7 +56,20 @@ books.each do |book|
     )
 
   count = count + 1
-  if limit
-    abort('Reached import limit') if count >= limit
-  end
+  break if limit and count >= limit
+end
+
+# Create Patrons
+puts "Creating Patrons"
+
+(1..100).each do |code|
+  patron = Patron.new
+  patron.code = code
+  patron.name = Faker::Name.name
+  patron.email = Faker::Internet.email
+  patron.keep_checkout_history = true
+  patron.adult = [true, false].sample
+  patron.save!
+
+  puts "[#{patron.code}] #{patron.name}"
 end

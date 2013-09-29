@@ -77,6 +77,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     faye (0.8.9)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -193,6 +195,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   ember-rails
   factory_girl_rails
+  faker
   faye
   jquery-rails (= 2.2.2)
   less-rails
