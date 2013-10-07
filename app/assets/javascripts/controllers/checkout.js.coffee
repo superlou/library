@@ -1,7 +1,4 @@
 Library.CheckoutController = Ember.ObjectController.extend
-  book_code: ''
-  patron_code: ''
-
   actions:
     save: ->
       @set 'model.status', 'out'
