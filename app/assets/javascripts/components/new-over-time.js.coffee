@@ -34,9 +34,6 @@ Library.NewOverTimeComponent = Ember.Component.extend
       }
     ]
 
-    console.log sortedNewHistory
-    console.log sortedTotalHistory
-
     svg = d3.select('#' + @get('elementId'))
 
     chart = nv.models.linePlusBarChart()
