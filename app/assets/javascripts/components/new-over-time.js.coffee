@@ -17,6 +17,7 @@ Library.NewOverTimeComponent = Ember.Component.extend
 
     for item in sortedNewHistory
       total += item[1]
+      item[0] = moment(item[0]).valueOf()
       sortedTotalHistory.push([item[0], total])
 
     data = [
@@ -33,6 +34,9 @@ Library.NewOverTimeComponent = Ember.Component.extend
       }
     ]
 
+    console.log sortedNewHistory
+    console.log sortedTotalHistory
+
     svg = d3.select('#' + @get('elementId'))
 
     chart = nv.models.linePlusBarChart()
@@ -44,7 +48,13 @@ Library.NewOverTimeComponent = Ember.Component.extend
     chart.xAxis
       .showMaxMin(false)
       .tickFormat (d)->
-        return d3.time.format('%x')(new Date(d))
+        dx = data[0].values[d] && data[0].values[d][0] || 0
+
+        if dx == 0
+          return null
+
+        result = d3.time.format('%x')(new Date(dx))
+        result
 
     chart.y1Axis
       .tickFormat(d3.format('d'))
