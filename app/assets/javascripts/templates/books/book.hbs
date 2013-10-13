@@ -24,7 +24,7 @@
 
         <span class='slugs'>
             <span class='slug'>{{codeSlug code}}</span>
-            <span class='slug'>{{stockSlug available stock}}</span>
+            <span class='slug' {{bind-attr class='noStock:alert'}} {{bind-attr class='notAvailable:warning'}}>{{stockSlug available stock}}</span>
             <span class='slug'>{{adultSlug adult}}</span>
         </span>
     </div>

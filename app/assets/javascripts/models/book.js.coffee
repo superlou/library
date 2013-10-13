@@ -20,6 +20,10 @@ Library.Book = Ember.Model.extend
     @get('stock') - copies_out
   ).property('stock', 'checkouts.@each.status')
 
+  notAvailable: (->
+    not @get('available')
+  ).property('available')
+
   full_title: (->
     volume = @get('volume')
 
@@ -38,6 +42,10 @@ Library.Book = Ember.Model.extend
       return false
 
     true
+
+  noStock: (->
+    if @get('stock') <= 0 then return true else return false
+  ).property('stock')
 
 Library.Book.reopenClass
   findByCode: (code) ->
