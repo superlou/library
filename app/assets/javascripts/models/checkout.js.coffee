@@ -1,14 +1,12 @@
-attr = Ember.attr
-hasMany = Ember.hasMany
-belongsTo = Ember.belongsTo
+attr = DS.attr
+belongsTo = DS.belongsTo
 
-Library.Checkout = Ember.Model.extend
-  id: attr(Number)
-  book: belongsTo('Library.Book', {key: 'book_id', embedded: false})
-  patron: belongsTo('Library.Patron', {key: 'patron_id', embedded: false})
+Library.Checkout = DS.Model.extend
+  book: belongsTo('book')
+  patron: belongsTo('patron')
   status: attr()
-  closed_at: attr(Date)
-  created_at: attr(Date)
+  closed_at: attr('date')
+  created_at: attr('date')
 
   isFullyLoaded: (->
     if @get('book.isLoaded') and @get('patron.isLoaded')
@@ -37,6 +35,3 @@ Library.Checkout = Ember.Model.extend
 Library.Checkout.reopenClass
   findByInfo: (book_info, patron_info) ->
     @find('book_info:' + book_info)
-
-Library.Checkout.url = '/checkouts'
-Library.Checkout.adapter = Library.CheckoutAdapter.create()

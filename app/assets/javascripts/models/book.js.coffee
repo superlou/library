@@ -1,19 +1,21 @@
-attr = Ember.attr
-hasMany = Ember.hasMany
+#Library.Book.url = '/books'
+#Library.Book.adapter = Library.RESTAdapter.create()
 
-Library.Book = Ember.Model.extend
-  id: attr(Number)
+attr = DS.attr
+hasMany = DS.hasMany
+
+Library.Book = DS.Model.extend
   code: attr()
   volume: attr()
-  stock: attr(Number)
+  stock: attr('number')
   title: attr()
   subtitle: attr()
-  adult: attr()
+  adult: attr('boolean')
   notes: attr()
   author: attr()
-  created_at: attr(Date)
+  created_at: attr('date')
 
-  checkouts: hasMany('Library.Checkout',{key: 'checkout_ids'})
+  checkouts: hasMany('checkout')
 
   available: (->
     copies_out = @get('checkouts').filterProperty('status', 'out').get('length')
@@ -26,6 +28,7 @@ Library.Book = Ember.Model.extend
 
   full_title: (->
     volume = @get('volume')
+    title = @get('title')
 
     if volume
       @get('title') + ", vol. " + volume
@@ -51,22 +54,17 @@ Library.Book.reopenClass
   findByCode: (code) ->
     @find('code:' + code)
 
-  cloneVolumeFrom: (original_id) ->
-    @fetch(original_id).then (item)->
+  cloneVolumeFrom: (item) ->
+    if parseInt(item.get('volume'))
+      next_volume = parseInt(item.get('volume')) + 1
+    else
+      next_volume = undefined
 
-      if parseInt(item.get('volume'))
-        next_volume = parseInt(item.get('volume')) + 1
-      else
-        next_volume = undefined
+    cloned_book_params = {
+      title: item.get('title')
+      notes: item.get('notes')
+      adult: item.get('adult')
+      volume: next_volume
+    }
 
-
-      cloned_book = Library.Book.create
-        title: item.get('title')
-        notes: item.get('notes')
-        adult: item.get('adult')
-        volume: next_volume
-
-      return cloned_book
-
-Library.Book.url = '/books'
-Library.Book.adapter = Library.RESTAdapter.create()
+    return cloned_book_params

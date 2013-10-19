@@ -1,11 +1,7 @@
-attr = Ember.attr
+attr = DS.attr
 
-Library.Event = Ember.Model.extend
-  id: attr(Number)
+Library.Event = DS.Model.extend
   name: attr()
   location: attr()
-  start: attr(Date)
-  finish: attr(Date)
-
-Library.Event.url = '/events'
-Library.Event.adapter = Ember.RESTAdapter.create()
+  start: attr('date')
+  finish: attr('date')

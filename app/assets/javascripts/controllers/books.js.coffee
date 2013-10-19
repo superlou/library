@@ -6,7 +6,7 @@ Library.BooksController = Ember.ArrayController.extend
       return false unless item.get('isLoaded')
       item.match_filter(@get('filterQuery'))
 
-  ).property('model.isLoaded', 'filterQuery')
+  ).property('model.@each', 'filterQuery')
 
 Library.BooksIndexController = Ember.Controller.extend
   needs: 'books'

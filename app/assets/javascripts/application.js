@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require handlebars
 //= require ember
-//# require ember-data
+//= require vendor/ember-data
 //= require_self
 //= require library
 //= require vendor/bootstrap

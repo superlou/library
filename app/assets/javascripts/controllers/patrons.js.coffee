@@ -6,7 +6,7 @@ Library.PatronsController = Ember.ArrayController.extend
       return false unless item.get('isLoaded')
       item.match_filter(@get('filterQuery'))
 
-  ).property('model.isLoaded', 'filterQuery')
+  ).property('model.@each.isLoaded', 'filterQuery')
 
 Library.PatronsNewController = Ember.ObjectController.extend
   actions:

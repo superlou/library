@@ -31,7 +31,7 @@ Library.Router.map ()->
 
 Library.BooksRoute = Ember.Route.extend
   setupController: (controller)->
-    controller.set 'model', Library.Book.findAll()
+    controller.set 'model', @get('store').findAll('book')
 
     client.subscribe '/books/new', (data)->
       model = controller.get('model').reload()
@@ -42,20 +42,28 @@ Library.BooksRoute = Ember.Route.extend
     client.subscribe '/books/delete', (data)->
       model = controller.get('model').reload()
 
+Library.BooksBookRoute = Ember.Route.extend
+  model: (params)->
+    @get('store').find('book', params.book_id)
+
 Library.BooksNewRoute = Ember.Route.extend
   model: (params)->
-    Library.Book.create()
+    @get('store').createRecord('book', {title: 'New Book'})
 
 Library.BooksCloneVolumeRoute = Ember.Route.extend
   setupController: (controller, model)->
     basis_model = model
-    Library.Book.cloneVolumeFrom(model.get('id')).then (model)->
-      controller.set('model', model)
+    basis_id = model.get('id')
+
+    @get('store').find('book', basis_id).then (item)=>
+      cloned_book_params = Library.Book.cloneVolumeFrom(item)
+      cloned_book = @get('store').createRecord('book', cloned_book_params)
+      controller.set('model', cloned_book)
       controller.set('basis_model', basis_model)
 
 Library.PatronsRoute = Ember.Route.extend
   setupController: (controller)->
-    controller.set 'model', Library.Patron.findAll()
+    controller.set 'model', @get('store').findAll('patron')
 
     client.subscribe '/patrons/new', (data)->
       model = controller.get('model').reload()
@@ -68,33 +76,33 @@ Library.PatronsRoute = Ember.Route.extend
 
 Library.PatronsNewRoute = Ember.Route.extend
   model: (params)->
-    Library.Patron.create
-      keepCheckoutHistory: true
+    @get('store').createRecord 'patron',
+      { keepCheckoutHistory: true }
 
 
 Library.CheckoutsRoute = Ember.Route.extend
   model: (params)->
-    Library.Checkout.findAll()
+    @get('store').findAll('checkout')
 
 Library.CheckoutsNewRoute = Ember.Route.extend
   setupController: (controller)->
     controller.set('book_code', '')
     controller.set('patron_code', '')
-    controller.set('model', Library.Checkout.create())
+    controller.set('model', @get('store').createRecord('checkout', {}))
 
 Library.CheckoutRoute = Ember.Route.extend
   setupController: (controller, context, queryParams)->
-    controller.set('model', Library.Checkout.create())
+    controller.set('model', @get('store').createRecord('checkout', {}))
     controller.set('book_code', queryParams.bookCode)
     controller.set('patron_code', '')
 
 Library.CheckinRoute = Ember.Route.extend
   setupController: (controller)->
-    controller.set 'model', Library.Checkout.find({status: 'out'})
+    controller.set 'model', @get('store').find('checkout', {status: 'out'})
 
     client.subscribe '/checkouts/update', (data)->
-      controller.set 'model', Library.Checkout.find({status: 'out'})
+      controller.set 'model', @get('store').find('checkout', {status: 'out'})
 
 Library.SettingsEventsRoute = Ember.Route.extend
   model: (params)->
-    Library.Event.findAll()
+    @get('store').findAll('event')
