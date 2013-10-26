@@ -10,6 +10,8 @@ Library.Patron = DS.Model.extend
   adult: attr()
   keepCheckoutHistory: attr()
 
+  checkouts: DS.hasMany('checkout')
+
   match_filter: (filter)->
     filter = filter.toLowerCase()
     name = @get('name').toLowerCase()

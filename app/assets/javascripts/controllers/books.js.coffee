@@ -36,6 +36,7 @@ Library.BooksBookController = Ember.ObjectController.extend
   actions:
     delete: ->
       @get('content').deleteRecord()
+      @get('content').save()
       @transitionToRoute('books')
 
   resetErrors: (->
@@ -48,11 +49,12 @@ Library.BooksEditController = Ember.ObjectController.extend
       @get('content').save().then(
         (val)=>
           @transitionToRoute('books.book', @get('content'))
-        (err)=> @set 'errors', err
+        (err)=>
+          @set 'errors', err
       )
 
     cancel: ->
-      @get('content').reload()
+      @get('content').rollback()
       @transitionToRoute('books.book', @get('content'))
 
 Library.BooksCloneVolumeController = Ember.ObjectController.extend

@@ -28,19 +28,47 @@ Library.Router.map ()->
     @route 'general'
     @route 'events'
 
+Library.ApplicationRoute = Ember.Route.extend
+  model: ->
+    client.subscribe '/books/new', (data)=>
+      @get('store').find('book', data.id)
+
+    client.subscribe '/books/update', (data)=>
+      @get('store').find('book', data.id).then (book)->
+        book.reload()
+
+    client.subscribe '/books/delete', (data)=>
+      @get('store').find('book', data.id).then (book)->
+        book.deleteRecord()
+
+
+    client.subscribe '/patrons/new', (data)=>
+      @get('store').find('patron', data.id)
+
+    client.subscribe '/patrons/update', (data)=>
+      @get('store').find('patron', data.id).then (patron)->
+        patron.reload()
+
+    client.subscribe '/patrons/delete', (data)=>
+      @get('store').find('patron', data.id).then (patron)->
+        patron.deleteRecord()
+
+
+    #todo checkout updating doesn't seem to be working
+    client.subscribe '/checkouts/new', (data)=>
+      @get('store').find('checkout', data.id)
+
+    client.subscribe '/checkouts/update', (data)=>
+      @get('store').find('checkout', data.id).then (checkout)->
+        checkout.reload()
+
+    client.subscribe '/checkouts/delete', (data)=>
+      @get('store').find('checkout', data.id).then (checkout)->
+        checkout.deleteRecord()
 
 Library.BooksRoute = Ember.Route.extend
   setupController: (controller)->
     controller.set 'model', @get('store').findAll('book')
-
-    client.subscribe '/books/new', (data)->
-      model = controller.get('model').reload()
-
-    client.subscribe '/books/update', (data)->
-      model = controller.get('model').reload()
-
-    client.subscribe '/books/delete', (data)->
-      model = controller.get('model').reload()
 
 Library.BooksBookRoute = Ember.Route.extend
   model: (params)->
@@ -65,20 +93,10 @@ Library.PatronsRoute = Ember.Route.extend
   setupController: (controller)->
     controller.set 'model', @get('store').findAll('patron')
 
-    client.subscribe '/patrons/new', (data)->
-      model = controller.get('model').reload()
-
-    client.subscribe '/patrons/update', (data)->
-      model = controller.get('model').reload()
-
-    client.subscribe '/patrons/delete', (data)->
-      model = controller.get('model').reload()
-
 Library.PatronsNewRoute = Ember.Route.extend
   model: (params)->
     @get('store').createRecord 'patron',
       { keepCheckoutHistory: true }
-
 
 Library.CheckoutsRoute = Ember.Route.extend
   model: (params)->
@@ -99,9 +117,6 @@ Library.CheckoutRoute = Ember.Route.extend
 Library.CheckinRoute = Ember.Route.extend
   setupController: (controller)->
     controller.set 'model', @get('store').find('checkout', {status: 'out'})
-
-    client.subscribe '/checkouts/update', (data)->
-      controller.set 'model', @get('store').find('checkout', {status: 'out'})
 
 Library.SettingsEventsRoute = Ember.Route.extend
   model: (params)->

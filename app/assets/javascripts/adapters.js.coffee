@@ -9,3 +9,7 @@
 #    record.load(id, dataToLoad)
 #
 #Library.CheckoutAdapter = Ember.RESTAdapter.extend()
+
+Library.ApplicationAdapter = DS.ActiveModelAdapter.extend
+  find: (store, type, id)->
+    @ajax(@buildURL(type.typeKey, id), 'GET')

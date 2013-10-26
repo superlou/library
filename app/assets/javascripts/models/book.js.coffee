@@ -15,7 +15,7 @@ Library.Book = DS.Model.extend
   author: attr()
   created_at: attr('date')
 
-  checkouts: hasMany('checkout')
+  checkouts: hasMany('checkout', {async: true})
 
   available: (->
     copies_out = @get('checkouts').filterProperty('status', 'out').get('length')
