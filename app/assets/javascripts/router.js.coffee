@@ -1,7 +1,4 @@
 # For more information see: http://emberjs.com/guides/routing/
-
-client = new Faye.Client('http://' + window.location.hostname + ':9292/faye')
-
 Library.Router.map ()->
 
   @route 'books.search', {path: '/books/search'}
@@ -27,44 +24,6 @@ Library.Router.map ()->
   @resource 'settings', ->
     @route 'general'
     @route 'events'
-
-Library.ApplicationRoute = Ember.Route.extend
-  model: ->
-    client.subscribe '/books/new', (data)=>
-      @get('store').find('book', data.id)
-
-    client.subscribe '/books/update', (data)=>
-      @get('store').find('book', data.id).then (book)->
-        book.reload()
-
-    client.subscribe '/books/delete', (data)=>
-      @get('store').find('book', data.id).then (book)->
-        book.deleteRecord()
-
-
-    client.subscribe '/patrons/new', (data)=>
-      @get('store').find('patron', data.id)
-
-    client.subscribe '/patrons/update', (data)=>
-      @get('store').find('patron', data.id).then (patron)->
-        patron.reload()
-
-    client.subscribe '/patrons/delete', (data)=>
-      @get('store').find('patron', data.id).then (patron)->
-        patron.deleteRecord()
-
-
-    #todo checkout updating doesn't seem to be working
-    client.subscribe '/checkouts/new', (data)=>
-      @get('store').find('checkout', data.id)
-
-    client.subscribe '/checkouts/update', (data)=>
-      @get('store').find('checkout', data.id).then (checkout)->
-        checkout.reload()
-
-    client.subscribe '/checkouts/delete', (data)=>
-      @get('store').find('checkout', data.id).then (checkout)->
-        checkout.deleteRecord()
 
 Library.BooksRoute = Ember.Route.extend
   setupController: (controller)->
@@ -116,7 +75,11 @@ Library.CheckoutRoute = Ember.Route.extend
 
 Library.CheckinRoute = Ember.Route.extend
   setupController: (controller)->
-    controller.set 'model', @get('store').find('checkout', {status: 'out'})
+    @get('store').find('checkout', {status: 'out'})
+    controller.set 'model', @get('store').filter('checkout', (item)->
+      item.get('isOpen')
+    )
+
 
 Library.SettingsEventsRoute = Ember.Route.extend
   model: (params)->

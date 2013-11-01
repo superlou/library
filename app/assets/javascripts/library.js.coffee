@@ -1,4 +1,5 @@
 #= require ./store
+#= require ./subscriptions
 #= require_tree ./vendor
 #= require adapters
 #= require serializers

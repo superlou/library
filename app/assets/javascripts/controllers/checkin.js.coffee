@@ -11,9 +11,9 @@ Library.CheckinController = Ember.ArrayController.extend
       book = item.get('book')
       patron = item.get('patron')
 
-      return false if item.get('status') != 'out'
-
       if item.get('isFullyLoaded')
+        return false if item.get('status') != 'out'
+
         book_full_title = book.get('full_title').toLowerCase()
         book_code = book.get('code').toLowerCase()
         patron_name = patron.get('name').toLowerCase()
@@ -25,19 +25,19 @@ Library.CheckinController = Ember.ArrayController.extend
         return true if (patron_code.indexOf(info) >= 0)
 
       false
-  ).property('checkoutInfo', 'model.@each.isFullyLoaded', 'model.@each.status')
+  ).property('checkoutInfo', 'model.@each.isFullyLoaded', 'model.@each.isDone', 'model.@each.status')
 
   actions:
     return: (checkout)->
       checkout.set('closed_at', moment())
       checkout.set('status', 'returned')
       checkout.save()
-      @set('model', @get('store').find('checkout', {status: 'out'}))
+      #@set('model', @get('store').find('checkout', {status: 'out'}))
 
     delete: (checkout)->
       checkout.deleteRecord()
       checkout.save()
-      @set('model', @get('store').find('checkout', {status: 'out'}))
+      #@set('model', @get('store').find('checkout', {status: 'out'}))
 
     setCheckoutToLose: (checkout)->
       @set('checkoutToLose', checkout)
@@ -47,7 +47,7 @@ Library.CheckinController = Ember.ArrayController.extend
       checkout.set('status', 'lost')
       checkout.save()
 
-      @set('model', @get('store').find('checkout', {status: 'out'}))
+      #@set('model', @get('store').find('checkout', {status: 'out'}))
 
     loseChangeStock: (checkout)->
       stock = checkout.get('book.stock')
@@ -58,4 +58,4 @@ Library.CheckinController = Ember.ArrayController.extend
       checkout.set('status', 'lost')
       checkout.save()
 
-      @set('model', @get('store').find('checkout', {status: 'out'}))
+      #@set('model', @get('store').find('checkout', {status: 'out'}))

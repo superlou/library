@@ -28,9 +28,8 @@ class CheckoutsController < ApplicationController
   end
 
   def destroy
-    checkout_id = params[:id]
     checkout = Checkout.destroy(params[:id])
-    broadcast('/checkouts/delete', {id: checkout_id})
+    broadcast('/checkouts/delete', {id: checkout.id})
     respond_with checkout
   end
 
