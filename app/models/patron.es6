@@ -16,7 +16,7 @@ App.Patron = DS.Model.extend({
     var filter = filter.toLowerCase();
     var name = this.get('name').toLowerCase();
 
-    return (name.indexOf(filter) >= 0)
+    return (name.indexOf(filter) >= 0);
   }
 });
 

@@ -17,18 +17,18 @@ class Api::V1::PatronsController < ApplicationController
 
   def create
     patron = Patron.create(patron_params)
-    broadcast('/patrons/new', {id: patron.id}) unless patron.new_record?
+    #broadcast('/patrons/new', {id: patron.id}) unless patron.new_record?
     respond_with patron
   end
 
   def update
     patron = Patron.update(params[:id], patron_params)
-    broadcast('/patrons/update', {id: patron.id})
+    #broadcast('/patrons/update', {id: patron.id})
     respond_with patron
   end
 
   def destroy
-    broadcast('/patrons/delete', {id: params[:id]})
+    #broadcast('/patrons/delete', {id: params[:id]})
     respond_with Patron.destroy(params[:id])
   end
 

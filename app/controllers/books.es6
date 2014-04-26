@@ -35,14 +35,3 @@ export default Ember.ArrayController.extend({
 //   search: ->
 //     # this is waiting on QueryParams implementation
 //     @transitionToRoute('books', {test: 'here'})
-
-// Library.BooksNewController = Ember.ObjectController.extend
-//   actions:
-//     save: ->
-//       @get('model').save().then(
-//         (val)=> @transitionToRoute('books.book', @get('model'))
-//         (err)=> @set 'errors', err
-//       )
-
-//     cancel: ->
-//       @transitionToRoute('books')

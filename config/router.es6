@@ -38,15 +38,6 @@ Router.map(function() {
 
 export default Router;
 
-// Library.PatronsRoute = Ember.Route.extend
-//   setupController: (controller)->
-//     controller.set 'model', @get('store').findAll('patron')
-
-// Library.PatronsNewRoute = Ember.Route.extend
-//   model: (params)->
-//     @get('store').createRecord 'patron',
-//       { keepCheckoutHistory: true }
-
 // Library.CheckoutsRoute = Ember.Route.extend
 //   model: (params)->
 //     @get('store').findAll('checkout')
