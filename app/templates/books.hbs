@@ -6,7 +6,7 @@
 	  	</div>
 
 	    {{#collection SizingListView content=filteredModel height=300 rowHeight=40}}
-	        {{#link-to 'books.book' this}}{{full_title}}{{/link-to}}
+	        {{#link-to 'books.book' content}}{{full_title}}{{/link-to}}
 	        <div class='author'>{{author}}</div>
 	    {{/collection}}
 	</div>

@@ -4,42 +4,47 @@
 
 <div class='form-group'>
     <label for='title' class='col-md-2 control-label'>Title</label>
-    <div class='col-md-10'>
-        {{view Ember.TextField valueBinding='title' class='form-control'}}
+    <div class='col-md-7'>
+        {{view Ember.TextField value=title class='form-control'}}
+    </div>
+
+    <label for='volume' class='col-md-1 control-label'>Volume</label>
+    <div class='col-md-2'>
+        {{view Ember.TextField value=volume class='form-control'}}
     </div>
 </div>
 
 <div class='form-group'>
-    <label for='volume' class='col-md-2 control-label'>Volume</label>
-    <div class='col-md-2'>
-        {{view Ember.TextField valueBinding='volume' class='form-control'}}
+    <label for='title' class='col-md-2 control-label'>Author</label>
+    <div class='col-md-10'>
+        {{view Ember.TextField value=author class='form-control'}}
     </div>
 </div>
 
 <div class='form-group'>
     <label for='code' class='col-md-2 control-label'>Code</label>
     <div class='col-md-2'>
-        {{view Ember.TextField valueBinding='code' class='form-control'}}
+        {{view Ember.TextField value=code class='form-control'}}
     </div>
 </div>
 
 <div class='form-group'>
     <label for='notes' class='col-md-2 control-label'>Notes</label>
     <div class='col-md-10'>
-        {{view Ember.TextArea valueBinding='notes' cols="80" rows="4" class='form-control'}}
+        {{view Ember.TextArea value=notes cols="80" rows="4" class='form-control'}}
     </div>
 </div>
 
 <div class='form-group'>
     <label for='adult' class='col-md-2 control-label'>Adult only</label>
     <div class='col-md-1'>
-        {{view Ember.Checkbox checkedBinding='adult' class='form-control'}}
+        {{view Ember.Checkbox checked=adult class='form-control'}}
     </div>
 </div>
 
 <div class='form-group'>
     <label for='stock' class='col-md-2 control-label'>Stock</label>
     <div class='col-md-2'>
-        {{view Ember.TextField valueBinding='stock' class='form-control'}}
+        {{view Ember.TextField value=stock class='form-control'}}
     </div>
 </div>

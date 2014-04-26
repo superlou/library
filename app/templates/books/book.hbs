@@ -8,12 +8,12 @@
 
 <div class='row'>
     <div class='col-md-12 toolbar'>
-        {{#link-to 'books.edit' this class='action'}}Edit{{/link-to}}
+        {{#link-to 'books.edit' model class='action'}}Edit{{/link-to}}
 
         <span class='dropdown'>
             <a data-toggle='dropdown' class='action'>Tools</a>
             <ul class='dropdown-menu' role='menu'>
-                <li>{{#link-to 'books.clone_volume' this}}
+                <li>{{#link-to 'books.clone_volume' model}}
                     <span class='glyphicon glyphicon-share-alt'></span> Clone Volume
                 {{/link-to}}</li>
                 <li><a {{action 'delete'}}><span class='glyphicon glyphicon-remove'></span> Delete</button></a></li>
