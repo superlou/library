@@ -1,2 +1,0 @@
-rails s &
-rackup faye.ru -s thin -E development

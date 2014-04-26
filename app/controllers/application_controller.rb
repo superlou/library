@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 
-  def broadcast(channel, data)
+def broadcast(channel, data)
     message = {channel: channel, data: data}
     if Rails.env.production?
         uri = URI.parse("http://library.louissimons.com:9292/faye")

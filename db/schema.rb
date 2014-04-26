@@ -9,18 +9,18 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130908211711) do
+ActiveRecord::Schema.define(version: 20130908211711) do
 
-  create_table "books", :force => true do |t|
+  create_table "books", force: true do |t|
     t.string   "code"
     t.string   "title"
     t.integer  "volume"
     t.boolean  "adult"
     t.text     "notes"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "stock"
     t.string   "subtitle"
     t.boolean  "oversized"
@@ -31,31 +31,31 @@ ActiveRecord::Schema.define(:version => 20130908211711) do
     t.string   "language"
   end
 
-  create_table "checkouts", :force => true do |t|
+  create_table "checkouts", force: true do |t|
     t.integer  "book_id"
     t.integer  "patron_id"
     t.string   "status"
     t.datetime "closed_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "events", :force => true do |t|
+  create_table "events", force: true do |t|
     t.string   "name"
     t.text     "location"
     t.datetime "start"
     t.datetime "finish"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "patrons", :force => true do |t|
+  create_table "patrons", force: true do |t|
     t.string   "name"
     t.string   "code"
     t.string   "gender"
     t.string   "email"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.text     "notes"
     t.boolean  "adult"
     t.boolean  "keep_checkout_history"

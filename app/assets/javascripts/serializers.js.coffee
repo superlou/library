@@ -1,1 +1,0 @@
-Library.ApplicationSerializer = DS.ActiveModelSerializer.extend({})

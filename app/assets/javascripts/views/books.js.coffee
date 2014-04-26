@@ -1,1 +1,0 @@
-Library.BooksView = Em.View.extend()

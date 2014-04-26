@@ -1,0 +1,17 @@
+<div class='row'>
+	<div class='col-md-4'>
+		<div class='form-group'>
+		    {{view Ember.TextField value=filterQuery label=''
+		    	placeholder='Filter' class='form-control'}}
+	  	</div>
+
+	    {{#collection SizingListView content=filteredModel height=300 rowHeight=40}}
+	        {{#link-to 'books.book' this}}{{full_title}}{{/link-to}}
+	        <div class='author'>{{author}}</div>
+	    {{/collection}}
+	</div>
+
+	<div class='col-md-8'>
+	    {{outlet}}
+	</div>
+</div>

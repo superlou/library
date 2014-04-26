@@ -1,0 +1,25 @@
+<nav class='navbar navbar-default' role='navigation'>
+    <div class='navbar-header'>
+        {{#link-to 'index' class='navbar-brand'}}Manga Library{{/link-to}}
+    </div>
+
+    <div class='navbar-collapse collapse'>
+        <ul class='nav navbar-nav'>
+            {{#link-to 'checkout' tagName='li' href='false'}}{{#link-to 'checkout'}}Checkout{{/link-to}}{{/link-to}}
+            {{#link-to 'checkin' tagName='li' href='false'}}{{#link-to 'checkin'}}Checkin{{/link-to}}{{/link-to}}
+            {{#link-to 'books' tagName='li' href='false'}}{{#link-to 'books'}}Books{{/link-to}}{{/link-to}}
+            {{#link-to 'patrons' tagName='li' href='false'}}{{#link-to 'patrons'}}Patrons{{/link-to}}{{/link-to}}
+            {{#link-to 'checkouts' tagName='li' href='false'}}{{#link-to 'checkouts'}}Transactions{{/link-to}}{{/link-to}}
+        </ul>
+
+        <ul class='nav navbar-nav navbar-right'>
+            {{#link-to 'settings' tagName='li' href='false'}}{{#link-to 'settings'}}
+                <span class='glyphicon glyphicon-cog'></span>
+            {{/link-to}}{{/link-to}}
+        </ul>
+    </div>
+</nav>
+
+<div class='container'>
+    {{outlet}}
+</div>
