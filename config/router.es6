@@ -53,15 +53,3 @@ export default Router;
 //     controller.set('model', @get('store').createRecord('checkout', {}))
 //     controller.set('book_code', queryParams.bookCode)
 //     controller.set('patron_code', '')
-
-// Library.CheckinRoute = Ember.Route.extend
-//   setupController: (controller)->
-//     @get('store').find('checkout', {status: 'out'})
-//     controller.set 'model', @get('store').filter('checkout', (item)->
-//       item.get('isOpen')
-//     )
-
-
-// Library.SettingsEventsRoute = Ember.Route.extend
-//   model: (params)->
-//     @get('store').findAll('event')

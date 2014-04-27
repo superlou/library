@@ -1,0 +1,41 @@
+<div class='row'>
+    {{#if isEditing}}
+        {{#each error in errors.content}}
+            <p>{{error.attribute}}: {{error.message}}</p>
+        {{/each}}
+    
+        <div class='col-md-10'>
+            <p>{{view Ember.TextField value=name  class='form-control'}}</p>
+            {{date-range-picker start=start finish=finish}}
+            <address>
+                {{view Ember.TextArea value=location class='form-control'}}
+            </address>
+        </div>
+        <div class='col-md-2'>
+            <div class='btn-group-vertical'>
+                <button class='btn btn-default' {{action save}}>
+                    Save
+                </button>
+                {{#if isExisting}}
+                    <button class='btn btn-default' {{action delete}}>
+                        Delete
+                    </button>
+                {{/if}}
+                <button class='btn btn-default' {{action cancel}}>
+                    Cancel
+                </button>
+            </div>
+        </div>
+    {{else}}
+        <div class='col-md-10'>
+            <p>{{name}}</p>
+            <p>{{shortDate start}} to {{shortDate finish}}</p>
+            <address>{{location}}</address>
+        </div>
+        <div class='col-md-2'>
+            <button class='btn btn-default' {{action edit}}>
+                <span class='glyphicon glyphicon-pencil'></span>  Edit
+            </button>
+        </div>
+    {{/if}}
+</div>
