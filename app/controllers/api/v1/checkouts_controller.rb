@@ -17,19 +17,19 @@ class Api::V1::CheckoutsController < ApplicationController
 
   def create
     checkout = Checkout.create(checkout_params)
-    broadcast('/checkouts/new', {id: checkout.id})
+    #broadcast('/checkouts/new', {id: checkout.id})
     respond_with checkout
   end
 
   def update
     checkout = Checkout.update(params[:id], checkout_params)
-    broadcast('/checkouts/update', {id: checkout.id})
+    #broadcast('/checkouts/update', {id: checkout.id})
     respond_with checkout
   end
 
   def destroy
     checkout = Checkout.destroy(params[:id])
-    broadcast('/checkouts/delete', {id: checkout.id})
+    #broadcast('/checkouts/delete', {id: checkout.id})
     respond_with checkout
   end
 

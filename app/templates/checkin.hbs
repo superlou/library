@@ -1,0 +1,77 @@
+<h1>Find Checkout</h1>
+
+<div class='row'>
+    <div class='col-md-12'>
+        <div class='form-group'>
+            {{view Ember.TextField value=checkoutInfo label='' class='form-control'
+              placeholder='book code or title, patron code or name'}}
+        </div>
+    </div>
+</div>
+
+<table class='table'>
+    <tr>
+        <th>Book</th>
+        <th>Patron</th>
+        <th>Checkout duration</th>
+        <th>Actions</th>
+    </tr>
+
+    {{#each matchedCheckouts}}
+        <tr>
+            <td>{{#link-to 'books.book' book}}{{book.full_title}}{{/link-to}}</td>
+            <td>{{#link-to 'patrons.patron' patron}}{{patron.name}}{{/link-to}}</td>
+            <td>{{humanizeDuration duration}}</td>
+            <td>
+                <button class='btn btn-primary' {{action return this}}>Return</button>
+                <button class='btn btn-default lose-modal' data-toggle='modal' data-target='#loseModal'
+                    {{action setCheckoutToLose this}}>
+                    Lose
+                </button>
+                <button class='btn btn-default' {{action delete this}}>Delete</button>
+            </td>
+        </tr>
+    {{/each}}
+</table>
+
+<div class='modal fade' id='loseModal' tabindex='-1' role='dialog'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class='modal-title'>Mark this book lost</h4>
+            </div>
+
+            <div class='modal-body'>
+                <p>
+                    <strong>{{checkoutToLose.book.full_title}}</strong> checked out by
+                    <strong>{{checkoutToLose.patron.name}}</strong>
+                </p>
+
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <button data-dismiss="modal" class='btn btn-default' {{action loseChangeStock checkoutToLose}}>Decrement stock</button>
+                    </div>
+                    <div class='col-md-9'>
+                        <p>
+                            Close the checkout and decrease the stock for the book by one.  This lets the system know that
+                            there is one less copy of this book to lend.
+                        </p>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='col-md-3'>
+                        <button data-dismiss="modal" class='btn btn-default' {{action loseLostOnly checkoutToLose}}>Mark lost only</button>
+                    </div>
+                    <div class='col-md-9'>
+                        <p>
+                            This will close the checkout but will not affect the stock information for this book.
+                            It will be like replacing the book but noting that the checkout was not properly returned.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
