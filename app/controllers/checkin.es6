@@ -2,9 +2,9 @@ export default Ember.ArrayController.extend({
   checkoutInfo: '',
   checkoutToLose: null,
 
-  init: function() {
+  initAttributes: function() {
     this.get('matchedCheckouts');
-  },
+  }.on('init'),
 
   matchedCheckouts: function() {
     var _this = this;

@@ -18,7 +18,7 @@ class Api::V1::CheckoutsController < ApplicationController
   def create
     checkout = Checkout.create(checkout_params)
     #broadcast('/checkouts/new', {id: checkout.id})
-    respond_with checkout
+    respond_with :api, :v1, checkout
   end
 
   def update
