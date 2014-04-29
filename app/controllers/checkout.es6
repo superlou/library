@@ -1,4 +1,7 @@
 export default Ember.ObjectController.extend({
+	book_code: '',
+	patron_code: '',
+
 	actions: {
 		save: function() {
 			this.set('model.status', 'out');

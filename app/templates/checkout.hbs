@@ -8,7 +8,7 @@
     <div class='col-md-6'>
         <div class='form-group'>
             <label>Book</label>
-            {{view Ember.TextField valueBinding='book_code'
+            {{view Ember.TextField value=book_code
               placeholder='book code' class='form-control'}}
             {{model.book.full_title}}
             {{#if model.book.adult}}
@@ -22,11 +22,11 @@
     <div class='col-md-6'>
         <div class='form-group'>
             <label>Patron</label>
-            {{view Ember.TextField valueBinding='patron_code'
+            {{view Ember.TextField value=patron_code
               placeholder='patron code' class='form-control'}}
             {{model.patron.name}}
         </div>
     </div>
 </div>
 
-<button class='btn btn-default' {{action save}} {{bindAttr disabled="saveDisabled"}}>Save</button>
+<button class='btn btn-default' {{action save}} {{bind-attr disabled="saveDisabled"}}>Save</button>

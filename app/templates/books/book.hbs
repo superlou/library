@@ -20,7 +20,8 @@
             </ul>
         </span>
 
-        {{#link-to 'checkout' bookCode=code class='action'}}Checkout{{/link-to}}
+        {{!-- {{#link-to 'checkout' bookCode=code class='action'}}Checkout{{/link-to}} --}}
+        <a href='#' {{action checkout model}} class='action'>Checkout</a>
 
         <span class='slugs'>
             <span class='slug'>{{codeSlug code}}</span>

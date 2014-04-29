@@ -1,7 +1,11 @@
 export default Ember.Route.extend({
-	setupController: function(controller, context, queryParams) {
-		controller.set('model', this.get('store').createRecord('checkout', {}))
-		controller.set('book_code', queryParams.bookCode)
-		controller.set('patron_code', '')
+	model: function() {
+		return this.get('store').createRecord('checkout', {});
+	},
+
+	setupController: function(controller, model) {
+		this._super(controller, model);
+		controller.set_model_book();
+		controller.set_model_patron();
 	}
 });
