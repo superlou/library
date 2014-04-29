@@ -18,7 +18,7 @@ class Api::V1::PatronsController < ApplicationController
   def create
     patron = Patron.create(patron_params)
     #broadcast('/patrons/new', {id: patron.id}) unless patron.new_record?
-    respond_with patron
+    respond_with :api, :v1, patron
   end
 
   def update

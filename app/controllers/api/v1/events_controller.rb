@@ -12,7 +12,7 @@ class Api::V1::EventsController < ApplicationController
   def create
     event = Event.create(event_params)
     broadcast('/events/new', {id: event.id}) unless event.new_record?
-    respond_with event
+    respond_with :api, :v1, event
   end
 
   def update

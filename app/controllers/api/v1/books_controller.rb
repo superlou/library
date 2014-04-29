@@ -18,7 +18,7 @@ class Api::V1::BooksController < ApplicationController
   def create
     book = Book.create(book_params)
     #broadcast('/books/new', {id: book.id}) unless book.new_record?
-    respond_with book
+    respond_with :api, :v1, book
   end
 
   def update
