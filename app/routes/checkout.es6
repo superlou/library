@@ -1,6 +1,8 @@
 export default Ember.Route.extend({
 	model: function() {
-		return this.get('store').createRecord('checkout', {});
+		if (!this.controllerFor('checkout').get('model')) {
+			return this.get('store').createRecord('checkout', {});
+		}
 	},
 
 	setupController: function(controller, model) {
