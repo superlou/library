@@ -39,7 +39,7 @@ export default Ember.ArrayController.extend({
 
   actions: {
     return: function(checkout) {
-      checkout.set('closed_at', moment());
+      checkout.set('closed_at', moment().toDate());
       checkout.set('status', 'returned');
       checkout.save();
     },
@@ -54,7 +54,7 @@ export default Ember.ArrayController.extend({
     },
 
     loseLostOnly: function(checkout) {
-      checkout.set('closed_at', moment());
+      checkout.set('closed_at', moment().toDate());
       checkout.set('status', 'lost');
       checkout.save();
     },
@@ -64,7 +64,7 @@ export default Ember.ArrayController.extend({
       checkout.set('book.stock', stock - 1);
       checkout.get('book').save();
 
-      checkout.set('closed_at', moment());
+      checkout.set('closed_at', moment().toDate());
       checkout.set('status', 'lost');
       checkout.save();
     }

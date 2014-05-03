@@ -1,4 +1,7 @@
 //= require jquery
+//= require jquery.ui.all
+//= require jquery.mousewheel
+//= require antiscroll
 //= require environment
 //= require ember-appkit
 //= require bootstrap
@@ -6,6 +9,7 @@
 //= require jquery.slimscroll
 //= require moment-with-langs
 //= require daterangepicker
+//= require ember-table
 //= require_self
 //= require_tree ./adapters
 //= require_tree ./serializers

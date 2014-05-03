@@ -1,0 +1,36 @@
+<h1>Events</h1>
+<p>Review all checkout and checkin transactions.</p>
+
+<table class='table table-striped'>
+<thead>
+	<tr>
+		<th>Checkout Date</th>
+		<th>Checkin Date</th>
+		<th>Patron</th>
+		<th>Book</th>
+		<th>Actions</th>
+	</tr>
+</thead>
+<tbody>
+	{{#each filteredModel}}
+		<tr>
+			<td>{{shortDateTime created_at}}</td>
+			<td>{{shortDateTimeWithDefault closed_at '(open)'}}</td>
+			<td>{{link-to patron.name 'patrons.patron' patron}}</td>
+			<td>{{link-to book.full_title 'books.book' book}}</td>
+			<td>
+				{{#unless isOpen}}
+					<button {{action open this}} class='btn btn-xs btn-default'>Open</button>
+				{{/unless}}
+				<button {{action delete this}} class='btn btn-xs btn-danger'>Delete</button>
+			</td>
+		</tr>
+	{{/each}}
+</tbody>
+</table>
+
+{{!-- Waiting on promise support
+{{table-component
+	content=content
+	columns=columns
+}} --}}

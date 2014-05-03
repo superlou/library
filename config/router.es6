@@ -22,34 +22,14 @@ Router.map(function() {
 		this.route('edit', {path: ':patron_id/edit'})
 	})
 
-	this.resource('checkouts', function() {
-		this.resource('checkouts.checkout', {path: ':checkout_id'});
-		this.route('new');
-	}),
-
 	this.route('checkout'),
 	this.route('checkin'),
 
 	this.resource('settings', function() {
 		this.route('general');
 		this.route('events');
+		this.route('checkout_log');
 	})
 });
 
 export default Router;
-
-// Library.CheckoutsRoute = Ember.Route.extend
-//   model: (params)->
-//     @get('store').findAll('checkout')
-
-// Library.CheckoutsNewRoute = Ember.Route.extend
-//   setupController: (controller)->
-//     controller.set('book_code', '')
-//     controller.set('patron_code', '')
-//     controller.set('model', @get('store').createRecord('checkout', {}))
-
-// Library.CheckoutRoute = Ember.Route.extend
-//   setupController: (controller, context, queryParams)->
-//     controller.set('model', @get('store').createRecord('checkout', {}))
-//     controller.set('book_code', queryParams.bookCode)
-//     controller.set('patron_code', '')
